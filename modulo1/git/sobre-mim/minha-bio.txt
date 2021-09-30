@@ -1,0 +1,6 @@
+# Minha biografia
+
+## Nascida em Salvador/BA mas atualmente residindo em Osasco/SP
+### O que mais gosto de fazer nas horas vagas é pesquisar curiosidades, jogar e assistir vídeos, filmes e séries.
+### Antes de decidir iniciar no mundo da programação eu era da aréa de administração mas já não me identificava mais com as atividades que exercia. 
+### Decidi que precisava de algo novo e o mundo da tecnologia/progrmação já era bem atrativo para mim então resolvi me dedicar.
