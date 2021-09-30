@@ -1,0 +1,12 @@
+## 10 Comidas favoritas.
+
+1 - Pizza
+2 - Hambúrgueres
+3 - Brasileira
+4 - Sanduíches
+5 - Massas
+6 - Grelhados/Churrascos
+7 - Doces e Bolos
+8 - Salgados
+9 - Açaí
+10 - Sorvetes
