@@ -67,6 +67,46 @@
 // const resto2 = Number(segundoNumero) % Number (primeiroNumero)
 // console.log (resto2 === 0)
 
+// Desfios
+// - Graus Fahrenheit(°F) para Kelvin(K)    
+//     (KELVIN) = (GRAUS_FAHRENHEIT - 32)*(5/9) + 273.15
+
+//-  Graus Celsius(°C) para Graus Fahrenheit (°C)
+//(GRAUS_FAHRENHEIT) = (GRAUS_CELSIUS)*(9/5) + 32
 
 
+// a) Calcule e mostre o valor de 77°F em  K, mostrando a unidade no console também.
+// let a = (77-32)*(5/9)+273.15
+// console.log ("77 Graus Fahrenheit equivale a",a, "Graus Kelvin") 
 
+// // b) Calcule e mostre o valor de 80°C em °F, mostrando a unidade no console também
+// let b = (80)*(9/5)+32
+// console.log ("80 Graus Celsius equivale a",b, "°Graus Fahrenheit" )
+
+// // c) Calcule e mostre o valor de 30°C em °F e K, mostrando as unidades no console também
+// let c = (30)*(9/5)+32
+// let ac = (c-32)*(5/9)+273.15  
+// console.log ( "30 Graus Celsius equivale a",c, "°Graus Fahrenheit e também equivale a", ac, "em Graus Kelvin" )
+
+
+// // d) Altere o último item para que o usuário insira o valor em graus Celsius que ele deseja converter
+// let graus = prompt ("Qual a temperatura em graus Celsius que deseja converte?")
+// let d = (graus)*(9/5)+32
+// let ad = (d-32)*(5/9)+273.15  
+// console.log ( graus,"Graus Celsius equivale a",c, "°Graus Fahrenheit e também equivale a", ac, "em Graus Kelvin" )
+
+// O quilowatt-hora de energia custa R$0.05. Faça um programa que receba a quantidade de quilowatts consumida por uma residência.
+
+// a) Calcule e mostre o valor a ser pago por uma residência que consuma 280 quilowatt-hora
+let valorPago = (280) * (0.05)
+console.log("A residência que consumir 280 quilowatt-hora, deverá", Number(valorPago));
+
+// b) Altere o programa para receber mais um valor: a porcentagem de desconto. Calcule e mostre o valor a ser pago pela mesma residência acima considerando 15% de desconto
+// let desconto = (0.15);
+// let valorPago = (280) * (0.05);
+
+// let resultado = (valorPago)*(desconto);
+
+// console.log(resultado)
+
+// console.log("A residência que consumir 280 quilowatt-hora, deverá", Number(valorPago));
