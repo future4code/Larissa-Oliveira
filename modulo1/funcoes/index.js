@@ -85,19 +85,25 @@
 // DESAFIOS
 // 1
 // a)
-const parametro = (parametroUm) => {
-    console.log(parametroUm)
-}
-parametro()
+// const parametro = (parametroUm) => {
+//     console.log(parametroUm)
+// }
+// parametro()
 
-// b) 
-const parametroDois =(valorUm, valorDois) =>{
-    const resultado = valorUm + valorDois
-    parametro(resultado)
-    console.log (resultado)
+// // b) 
+// const parametroDois =(valorUm, valorDois) =>{
+//     const resultado = valorUm + valorDois
+//     parametro(resultado)
+//     console.log (resultado)
         
-}
+// }
 
 
 // 2
-const
+function teoremadePitagoras(a, b){
+    const formula =(a**2)+(b**2)
+    const hip = formula**(1/2)
+    return hip
+    
+}
+teoremadePitagoras()
