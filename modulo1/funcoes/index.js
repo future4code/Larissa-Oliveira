@@ -99,9 +99,9 @@
 // }
 
 
-// 2
+// 2 teorema de Pitágoras
 function teoremadePitagoras(a, b){
-    const formula =(a**2)+(b**2)
+    const formula =(a**2)+(b**2) // forma de calcular ao quadrado.
     const hip = formula**(1/2)
     return hip
     
