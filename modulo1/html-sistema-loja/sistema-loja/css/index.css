@@ -1,0 +1,54 @@
+#logo {
+    height: 190px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* opacity: 0.5; */
+}
+
+div.recepcao1{
+    height: 10em;
+    position: relative
+}
+div.recepcao1 {
+    height: 10em;
+    position: relative }
+div.recepcao1 p {
+    margin: 0;
+    background: rgba(7, 8, 77, 0.26);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) }
+
+#recepcao {
+    margin: 0;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+div.menus{
+    height: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: center 
+}
+
+#redes{
+    height: 10%;
+}
+
+.imagem1{
+    height: 30px;
+}
+.imagem2{
+    height: 30px;
+}
+.imagem3{
+    height: 30px;
+}
+
