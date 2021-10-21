@@ -123,11 +123,20 @@ div:last-child {
 
 table {
     /* width: 60%; */
-    padding: 10px 0px;
+    padding: 5px 0px;
     margin-left: auto;
     margin-right: auto;
-    width: 50%
+    width: 40%
 }
+
+table td {
+    margin-left: auto;
+    margin-right: auto;
+    width: 190px
+}
+
+
+
 
 #camiseta{
     width: 60px
@@ -151,6 +160,9 @@ td button {
 .container-do-search {
     margin-top: 20px;
     height: 100px;
+}
+#lupa{
+    width: 15px;
 }
 
 
