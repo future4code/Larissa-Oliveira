@@ -94,6 +94,9 @@ div img {
     margin-right: auto;
     width: 190px
 }
+#container-de-descricao>h3{
+    
+}
 
 
 #container-para-comprar {
@@ -119,8 +122,23 @@ div:last-child {
 }
 
 table {
-    width: 60%;
+    /* width: 60%; */
+    padding: 10px 0px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%
 }
+
+#camiseta{
+    width: 60px
+}
+#jeans{
+    width: 60px
+}
+#chinelo{
+    width: 60px
+}
+
 
 td button {
     background-color: #fadf63;
