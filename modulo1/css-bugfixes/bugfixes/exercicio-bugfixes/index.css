@@ -29,8 +29,10 @@ img {
     width: 100px;
 }
 
-div>p:first-child {
+/* div>p:first-child {
     display: inline;
+    margin-top: 100px;
+    text-align: center; */
 }
 
 div img {
@@ -41,8 +43,8 @@ div img {
     background-color: #ffaf43;
     width: 250px;
     height: 40px;
-    border-radius: 5px;
-    font-size: 20px;
+    border-radius: 10px;
+    font-size: 30px;
     color: white;
     /* text-align: center; */
     display: block;
@@ -73,11 +75,22 @@ div img {
 #container-de-descricao {
     background-color: #2274a5;
     color: white;
+    
+
+}
+
+#container-de-descricao>p {
+    padding: 100px 0px;
+    /* margin-top: 0px; */
+    /* text-align: center; */
+    /* width: auto; */
 }
 
 #container-de-descricao>ol {
-    padding: 15px 0px;
+    /* padding: 15px 0px; */
+    /* margin-top: 30px; */
 }
+
 
 #container-para-comprar {
     background-color: #e7eb90;
