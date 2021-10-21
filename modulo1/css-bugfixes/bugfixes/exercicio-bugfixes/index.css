@@ -148,8 +148,12 @@ table td {
     width: 60px
 }
 
+#menu ul li a:hover {
+    background-color:#aa7ceed3;
+    color: #46065a;
+    border-bottom:3px solid #c300ff;
 
-td button {
+td button:houver {
     background-color: #fadf63;
     width: 150px;
     height: 30px;
@@ -163,6 +167,16 @@ td button {
 }
 #lupa{
     width: 15px;
+}
+
+#botaoCamiseta:hover{
+    background-color: #ffff;
+}
+#botaoJeans:hover{
+    background-color: #ffff;
+}
+#botaoChinelos:hover{
+    background-color: #ffff;
 }
 
 
