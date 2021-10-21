@@ -19,6 +19,8 @@ h2 {
 input {
     height: 20px;
     width: 500px;
+    border: none;
+    border-bottom: 2px solid black ;
 }
 
 button:focus {
@@ -148,12 +150,8 @@ table td {
     width: 60px
 }
 
-#menu ul li a:hover {
-    background-color:#aa7ceed3;
-    color: #46065a;
-    border-bottom:3px solid #c300ff;
 
-td button:houver {
+td button {
     background-color: #fadf63;
     width: 150px;
     height: 30px;
@@ -170,13 +168,16 @@ td button:houver {
 }
 
 #botaoCamiseta:hover{
-    background-color: #ffff;
+    background-color: #b39d47;
+    color: #ffff;
 }
 #botaoJeans:hover{
-    background-color: #ffff;
+    background-color: #b39d47;
+    color: #ffff;
 }
-#botaoChinelos:hover{
-    background-color: #ffff;
+#botaoChinelo:hover{
+    background-color: #b39d47;
+    color: #ffff;
 }
 
 
