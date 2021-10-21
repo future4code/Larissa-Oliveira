@@ -81,9 +81,9 @@ div img {
 
 #container-de-descricao>p {
     padding: 100px 0px;
-    /* margin-top: 0px; */
-    /* text-align: center; */
-    /* width: auto; */
+    margin-left: auto;
+    margin-right: auto;
+    width: 190px
 }
 
 #container-de-descricao>ol {
