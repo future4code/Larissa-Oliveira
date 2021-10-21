@@ -1,3 +1,11 @@
+
+
+*{margin: 0; padding: 0;}
+body{
+font-family: arial, helvetica, sans-serif;
+font-size: 12px;
+}
+
 #logo {
     height: 190px;
     display: block;
@@ -6,10 +14,8 @@
     /* opacity: 0.5; */
 }
 
-div.recepcao1{
-    height: 10em;
-    position: relative
-}
+
+
 div.recepcao1 {
     height: 10em;
     position: relative }
@@ -31,16 +37,43 @@ div.recepcao1 p {
     transform: translate(-50%, -50%)
 }
 
-div.menus{
-    height: 5em;
-    display: flex;
-    align-items: center;
-    justify-content: center 
+
+
+#menu ul {
+    padding:0px;
+    margin:0px;
+    background-color:#EDEDED;
+    list-style:none;
+}
+#menu ul li { display: inline; }
+#menu ul li a {
+    padding: 2px 10px;
+    display: inline-block;
+
+    /* visual do link */
+    background-color:#EDEDED;
+    color: #333;
+    text-decoration: none;
+    border-bottom:3px solid #EDEDED;
+
+    transition: background-color 1s , color 1s , border-bottom 1s;
+    transition-timing-function: ease-out;
+
+}
+#menu ul li a:hover {
+    background-color:#D6D6D6;
+    color: #6D6D6D;
+    border-bottom:3px solid #EA0000;
 }
 
-#redes{
-    height: 10%;
+#redes ul {
+
 }
+#redes ul li { display:inline;}
+
+
+
+
 
 .imagem1{
     height: 30px;
@@ -52,3 +85,10 @@ div.menus{
     height: 30px;
 }
 
+body{
+    /* background-color: #dfc2ed; */
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvtucjA40pe8KTghQwRTRnaX4mqiHr1I_xGQ&usqp=CAU);
+    background-size: cover;
+    /* opacity: 100%; */
+
+}
