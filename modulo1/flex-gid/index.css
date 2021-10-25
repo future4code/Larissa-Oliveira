@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container-page{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+header{
+    background-color: mediumvioletred;
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.logoBolo {
+    width: 30px;
+}
+
+.logoConfeitaria {
+    display: block;
+    margin-right: 83vw;
+}
+
+button{
+    padding: 0 10px;
+}
+.img {
+    width: 20px;
+    height: 20px;
+}
+.setinha {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.home-nome {
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.home1 {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+}
+
+
+.home2{
+    margin-top: 2px;
+    display: flex;
+    width: 320px;
+}
+main{
+    display: flex;
+    flex-grow: 1;
+}
+footer{
+    height: 3vw;
+    background-color: mediumvioletred; 
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.menu {
+    width: 300px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    background-color: #f2d0e0;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /* margin-top: 10px; */
+    /* height: 90px; */
+    padding: 1rem 2rem 10rem;
+}
+
+.card-box {
+    /* display: flex; */
+    text-align: center;
+    /* align-items: center; */
+    width: 242px;
+    height: 310px;
+    padding: 10px;
+    box-shadow: 10px 5px 5px darkgray;
+    /* border: 1px solid rgba(173, 22, 22, 0.534); */
+
+
+}
+.card-img {
+    width: 250px;
+    height: 250px;
+}
+
+section{
+    background-color: green;
+    flex-grow: 1;
+}
