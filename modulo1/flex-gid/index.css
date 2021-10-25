@@ -87,8 +87,6 @@ footer{
 .card-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    /* margin-top: 10px; */
-    /* height: 90px; */
     padding: 1rem 2rem 10rem;
 }
 
