@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: grid;
+    height: 100vh;
+    grid-template-rows: 60px 1fr 60px;
+    grid-template-columns: 300px 1fr;
+    justify-items: center;
+    /* border:1px solid rgb(119, 0, 255); */
+    
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35px 60px;
+    background-color: aquamarine;
+}
+header, footer{
+    /* grid-column: 10/-5; */
+}
+
+footer{
+    background-color: rgb(79, 248, 192);
+    position:absolute;
+    bottom:0;
+    width:100vw;
+    padding:40px 0;
+    text-align: center;
+}
+#lupaBusca {
+    width: 10px;
+}
+
+
+main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin: 5vw;
+    justify-items: center;
+}    
+.card-container{
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 2px 5px black;
+    align-items: center;
+}
+.video {
+    width: 15vw;
+}

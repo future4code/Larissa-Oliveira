@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: grid;
+    height: 100vh;
+    grid-template-rows: 60px 1fr 60px;
+    grid-template-columns: 300px 1fr;
+    
+    
+}
+
+header {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: aquamarine;
+}
+header, footer{
+    grid-column: 1/-1;
+}
+
+footer{
+    background-color: rgb(79, 248, 192);
+    position:absolute;
+    bottom:0;
+    width:100vw;
+    padding:20px 0;
+    text-align: center;
+}
+#lupaBusca {
+    width: 10px;
+}
+
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5vw;
+    
+}    
+
+.video-container {
+    display: grid;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.video {
+    width: 60vw;
+}
