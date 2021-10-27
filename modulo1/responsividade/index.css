@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: 100%;
+    height: 100vh;
+    grid-template-rows: 60px 1fr 60px;
+    grid-template-columns: 300px 1fr;
+    justify-items: center;
+    /* border:1px solid rgb(119, 0, 255); */
+    
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35px 60px;
+    background-color: aquamarine;
+}
+.cabeca {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35px 60px;
+}
+header, footer{
+    grid-column: 10/-5;
+}
+
+.buscar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35px 60px;
+}
+
+footer{
+    background-color: rgb(79, 248, 192);
+    position:absolute;
+    bottom:0;
+    width:100vw;
+    padding:40px 0;
+    text-align: center;
+}
+#lupaBusca {
+    width: 10px;
+}
+
+
+main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin: 5vw;
+    justify-items: center;
+}    
+.card-container{
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 2px 5px black;
+    align-items: center;
+}
+.video {
+    width: 15vw;
+}
+.buscar {
+    justify-content: space-around
+}
+
+@media screen and (max-width: 768px) {
+    body {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    body {
+        width: 100%;
+    }
+  }
+  @media screen and (max-width: 411px) {
+    header {
+        margin: 0;
+        padding: 1rem 4rem;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        place-items: center;
+        display: flex;
+    }
+    h1 {
+        margin-left: 5%;
+    }
+    .buscar {
+        width: 10vh;
+        margin-left: 5%;
+    }
+    .video {
+        width: 90vw;
+    }
+    body  {
+        width: 100%;
+        display: grid;
+        padding: 0;
+        display: block;
+    }
+
+    main {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    footer {
+        position:static;
+        width:0w;
+        padding:20px 0;
+    }
+  }
