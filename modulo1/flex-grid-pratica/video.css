@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: grid;
+    height: 100vh;
+    grid-template-rows: 60px 1fr 60px;
+    grid-template-columns: 300px 1fr;
+    
+    
+}
+
+header {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: aquamarine;
+}
+header, footer{
+    grid-column: 1/-1;
+}
+
+footer{
+    background-color: rgb(79, 248, 192);
+    position:absolute;
+    bottom:0;
+    width:100vw;
+    padding:20px 0;
+    text-align: center;
+}
+#lupaBusca {
+    width: 10px;
+}
+
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5vw;
+    
+}    
+
+.video-container {
+    display: grid;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.video {
+    width: 60vw;
+}
+@media screen and (max-width: 768px) {
+    body {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    body {
+        width: 100%;
+    }
+  }
+  @media screen and (max-width: 411px) {
+    header {
+        margin: 0;
+        /* padding: 1rem 4rem; */
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        place-items: center;
+        display: flex;
+    }
+    h1 {
+        margin-left: 5%;
+    }
+    .buscar {
+        /* width: 10vh; */
+        margin-left: 5%;
+    }
+    .video {
+        width: 90vw;
+    }
+    body  {
+        width: 100%;
+        display: grid;
+        padding: 0;
+        display: block;
+    }
+
+    main {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    footer {
+        /* position:static;
+        width:0w;
+        padding:20px 0; */
+    }
+  }
