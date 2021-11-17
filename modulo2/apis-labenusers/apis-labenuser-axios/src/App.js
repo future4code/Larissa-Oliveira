@@ -1,18 +1,25 @@
 import React from 'react';
 import axios from 'axios';
-import {Container, PosicaoB} from './style'
-import PaginaUsuarios from './components/PaginaUsuarios'
-
+import {Container, PosicaoB} from './style';
+import PaginaUsuarios from './components/paginaUsuarios';
 
 export default class App extends React.Component {
   state={
     nomeUsuario: "",
     emailUsuario: "",
     listaDeUsuario:[],
-    userId: "",
-    usuario: {},
-    botao: true,
-    pagina: "formulario"
+    botao: false,
+  }
+
+  setRedirect = () => {
+    this.setState({
+      botao: true,
+    })
+  }
+  renderRedirect = () => {
+    if (this.state.botao) {
+      return <PaginaUsuarios to={PaginaUsuarios} />
+    }
   }
 
   componentDidMount() {
@@ -82,6 +89,7 @@ export default class App extends React.Component {
     axios
     .post(
       'https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users',
+      body,
       {
         headers:{
           Authorization: 'larissa-matos-carver'
@@ -130,15 +138,8 @@ export default class App extends React.Component {
     })
   }
 
-  // mudaBotao = () => {
-//   this.setState({botao: !this.state.botao})
-// if (this.state.pagina === "formulario"){
-//   this.setState({pagina:"lista"})
-// }else{ 
-//   (this.state)
 
-// }
-// }
+  
 // <button onClick={this.mudaBotao}>{this.state.botao ? 'Clica' : 'Clica de novo'}</button>
 
   render() {
@@ -158,12 +159,14 @@ export default class App extends React.Component {
         />
         <button onClick={this.createUser}>Salvar</button>
         <PosicaoB>
-        <button onClick={this.state.botao}> Ir para página de lista</button>
+          {this.renderRedirect}
+        <button onClick={this.setRedirect}> Ir para página de lista</button>
         </PosicaoB>
       </Container>
-
     )
-  }
+  
 
 }
+}
+
 
