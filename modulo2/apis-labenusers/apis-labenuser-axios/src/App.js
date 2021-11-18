@@ -1,56 +1,35 @@
 import React from 'react';
 import axios from 'axios';
 import {Container, PosicaoB} from './style';
-import PaginaUsuarios from './components/paginaUsuarios';
+import TelaCadastro from './components/telaCadastro';
+import TelaListaUsuarios from './components/telaListaUsuarios';
 
 export default class App extends React.Component {
   state={
+    telaAtual: "cadastro",
     nomeUsuario: "",
     emailUsuario: "",
     listaDeUsuario:[],
-    botao: false,
   }
 
-  setRedirect = () => {
-    this.setState({
-      botao: true,
-    })
-  }
-  renderRedirect = () => {
-    if (this.state.botao) {
-      return <PaginaUsuarios to={PaginaUsuarios} />
+  escolheTela = () => {
+    switch (this.state.telaAtual){
+      case "cadastro":
+        return <TelaCadastro irParaLista={this.irParaLista}/>
+      case "lista":
+        return <TelaListaUsuarios irParaCadastro={this.irParaCadastro}/>
+      default:
+        return <TelaCadastro />    
     }
   }
 
-  componentDidMount() {
-    this.getAllUsers()
+  irParaCadastro = () => {
+    this.setState({telaAtual: "cadastro"})
+    
   }
-
-  handleNomeUsuario = (e) => {
-    this.setState({ nomeUsuario: e.target.value });
-  };
-
-  handleEmailUsuario = (e) => {
-    this.setState({ emailUsuario: e.target.value });
-  };
-
-  getAllUsers = () => {
-    axios
-    .get(
-      'https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users',
-      {
-        headers:{
-          Authorization: 'larissa-matos-carver'
-        }
-      }
-    )
-    .then((res)=>{
-      this.setState({ listaDeUsuario: res.data.result.users})
-      console.log(res.data.result.users)
-    })
-    .catch((err)=> {
-      console.log(err.response)
-    })
+  irParaLista = () => {
+    this.setState({telaAtual: "lista"})
+    
   }
 
   getUserById = () => {
@@ -81,31 +60,7 @@ export default class App extends React.Component {
     )
   }
 
-  createUser = () => {
-    const body = {
-      name: this.state.nomeUsuario,
-      email: this.state.emailUsuario
-    }
-    axios
-    .post(
-      'https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users',
-      body,
-      {
-        headers:{
-          Authorization: 'larissa-matos-carver'
-        }
-      })
-    .then(() => {
-      this.setState({nomeUsuario: ''})
-      this.setState({emailUsuario: ''})
-      alert('Usuário registrado')
-    })
-    .catch((err) => {
-      console.log(err.response.data);
-      alert('Não foi possível registrar o usuario')
-    });
-    console.log(body)
-  }
+  
 
   editUser = () => {
     axios
@@ -119,49 +74,10 @@ export default class App extends React.Component {
     )
   }
 
-  deleteUser = (id) => {
-    axios
-    .delete(
-      `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`,
-      {
-      headers:{
-        Authorization: 'larissa-matos-carver'
-      }
-    })
-    .then(() => {
-      this.setState({listaDeUsuario: ''})
-      alert('Usuario deletado')
-    })
-    .catch((err) => {
-      console.log(err.response.data)
-      alert('Não foi possível deletar o usuario')
-    })
-  }
-
-
-  
-// <button onClick={this.mudaBotao}>{this.state.botao ? 'Clica' : 'Clica de novo'}</button>
-
   render() {
-    console.log(this.state.listaDeUsuario)
-
     return(
       <Container>
-        <input 
-        placeholder={'Nome:'}
-        value={this.state.nomeUsuario}
-        onChange={this.handleNomeUsuario}
-        />
-      <input 
-        placeholder={'Email:'}
-        value={this.state.emailUsuario}
-        onChange={this.handleEmailUsuario}
-        />
-        <button onClick={this.createUser}>Salvar</button>
-        <PosicaoB>
-          {this.renderRedirect}
-        <button onClick={this.setRedirect}> Ir para página de lista</button>
-        </PosicaoB>
+        {this.escolheTela()}
       </Container>
     )
   

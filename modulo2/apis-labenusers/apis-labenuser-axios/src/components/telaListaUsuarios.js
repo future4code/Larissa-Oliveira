@@ -1,8 +1,20 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 import {Container, PosicaoB} from '../style'
 
-export default class PaginaUsuarios extends React.Component {
+const CardUser = styled.div`
+display: flex;
+padding: 2px;
+justify-content: space-between;
+
+button{
+    margin: 10px;
+}
+
+`
+
+export default class TelaListaUsuarios extends React.Component {
     state = {
         users: []
     }
@@ -23,27 +35,41 @@ export default class PaginaUsuarios extends React.Component {
     }
 
     //deletar usuario
-    deleteUsers = () => {
-        axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/:id", {
+    deleteUsers = (id) => {
+        axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`, {
             headers: {
                 Authorization: "larissa-matos-carver"
             }
         }).then((response) => {
-            console.log(response.data)
+            this.getAllUsers()
+            alert('O Usuario foi excluido')
         }).catch((error) => {
             console.log(error.response.data)
+            alert('Não foi possivel excluir o usuario')
         })
     }
     render() {
-        const userslist = this.state.users.map((user) =>
-            <li key={user.id}>{user.name} - <button>Deletar</button></li>)
+        const userslist = this.state.users.map((user) => {
+            return (
+                <CardUser>
+                <li key={user.id}>
+                    {user.name} 
+                    <button onClick={() => this.deleteUsers(user.id)}>x</button>
+                </li>
+                </CardUser>
+            )
+        })
+
         return (
             <Container>
+                
                     <h2>Lista de Usuários</h2>
                     <ul>
                         {userslist}
                     </ul>
-            <PosicaoB>Página Inicial</PosicaoB>
+            <PosicaoB>
+                <button onClick={this.props.irParaCadastro}>Ir para página de Cadastro</button>
+            </PosicaoB>
                 
             </Container>
         )
