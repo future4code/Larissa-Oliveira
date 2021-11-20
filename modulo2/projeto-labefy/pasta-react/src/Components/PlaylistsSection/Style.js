@@ -5,7 +5,7 @@ export const ContainerList = styled.div`
 `
 
 export const Div = styled.div`
-    font-size: calc(30px + 2vmin);
+    font-size: calc(25px + 2vmin);
     color: #C6EBBE; 
 `
 
