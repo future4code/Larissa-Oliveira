@@ -8,13 +8,13 @@ export default function Profile(props) {
             return <p>Carregando...</p>
         } else {
             return (
-                <>
+                <div>
                     <img src={props.photo} alt={props.name} />
                     <InfoContainer>
                         <h2>{props.name}, {props.age}</h2>
                         <p>{props.bio}</p>
                     </InfoContainer>
-                </>
+                </div>
             )
         }
     }
