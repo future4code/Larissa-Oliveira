@@ -8,61 +8,39 @@ export const GlobalStyle = createGlobalStyle`
     }
 `
 
-export const Card = styled.div `
-background-color: #191923;
-width: 370px;
-height: 300px;
-background-color: yellow;
-margin: 20px;
-position: relative;
-cursor: pointer;
-    h2 {
-        color:#191923;
-        position: absolute;
-        padding: 5px;
-        top: 0px;
-        left: 0px;
-        background-color: rgb(253, 178, 2);
-    }
-img {
-    width: 100%;
-    height: 300px;
-    cursor: pointer;
-    :hover {
-        opacity: 0.8;
-    }
-
-}
-`
-export const Info = styled.div `
-width: 100%;
-height: 30%;
-padding: 5px 10px;
-color:#fff;
-`
-
 export const Header = styled.header`
 background-color: #201335;
 height: 100px;
 width: 100%;
-padding: 0.5%;
+padding: 10px;
 color: #fff;
 display: flex;
 justify-content: space-between;
 align-items: flex-end;
 position: relative;
-h1 {
-        /* position: absolute; */
-        padding: 5px;
-        top: 0px;
-        left: 0px;
-        /* background-color: rgba(0,0,0,0.5); */
-    }
 img {
     width: 7%;
     cursor: pointer;
     :hover {
         opacity: 0.8;
+    }
+
+`
+
+export const BntLogout = styled.button`
+    padding: 10px;
+    background-color: #e63946;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 10px;
+    :hover {
+        color: #F00;
+        background-color: #fff;
     }
 `
 
@@ -85,5 +63,4 @@ cursor: pointer;
     background: #fff;
     color: #000;
 }
-
 `

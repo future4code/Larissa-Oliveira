@@ -1,11 +1,11 @@
 import React from 'react';
-import { Router } from './Router/Router'
+import Routers from './Router/Routers'
 
 
 const App = () => {
 
   return (
-    Router()
+    <Routers />
   )
 
 }

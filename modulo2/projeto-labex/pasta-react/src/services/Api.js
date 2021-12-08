@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { BASE_URL } from '../constants/configApi'
 
-export const login = (email, password) => {
+export const login = (email, password, goToDashBoard, history) => {
     const body = {
         "email": email,
         "password": password
@@ -9,12 +9,12 @@ export const login = (email, password) => {
     axios.post(`${BASE_URL}/login`, body)
         .then((response) => {
             localStorage.setItem("token", response.data.token)
+            goToDashBoard(history)
         })
         .catch((error) => {
             // console.log(error.data)
         })
 }
-
 export const getTrips = (setListTrips) => {
     axios.get(`${BASE_URL}/trips`)
         .then((response) => {
@@ -25,7 +25,6 @@ export const getTrips = (setListTrips) => {
             // console.log(error.data)
         })
 }
-
 export const createTrip = (body) => {
     const token = localStorage.getItem('token')
     axios.post(`${BASE_URL}/trips`, body, { headers: { auth: token } })
@@ -36,19 +35,17 @@ export const createTrip = (body) => {
             // console.log(error.data)
         })
 }
-
 export const getTripDetail = (id, setCandidate, setTrip) => {
     const token = localStorage.getItem('token')
     axios.get(`${BASE_URL}/trip${id}`, { headers: { auth: token } })
         .then((response) => {
             setTrip(response.data.trip)
-            setCandidate(response.data.candidates)
+            setCandidate(response.data.trip.candidates)
         })
         .catch((error) => {
             // console.log(error.data)
         })
 }
-
 export const applyToTrip = (user) => {
     const body = {
         "name": user.name,
@@ -57,21 +54,20 @@ export const applyToTrip = (user) => {
         "profession": user.profession,
         "country": user.country
     }
-    axios.post(`${BASE_URL}/trips/${user.tripID}/apply`, body)
-        .the((response) => {
-            alert('Sua solicitação foi enviada, aguarde a provação.')
-        })
+    axios.post(`${BASE_URL}/trips/${user.tripID}/apply`,body)
+    .then((response)=>{
+        alert('Sua solicitação foi enviada!')
+    })
         .catch((error) => {
             // console.log(error.data)
         })
 }
-
-export const decideCandidate = (approve, tripID, candidateId) => {
+export const decideCandidate = (approve, tripId, candidateId) => {
     const token = localStorage.getItem('token')
     const body = {
         "approve": approve
     }
-    axios.put(`${BASE_URL}/trips/${tripID}/candidates/${candidateId}/decide`, body, { headers: { auth: token } })
+    axios.put(`${BASE_URL}/trips/${tripId}/candidates/${candidateId}/decide`, body, { headers: { auth: token } })
         .then(() => {
             approve ?
                 alert("Candidato aprovado!")
