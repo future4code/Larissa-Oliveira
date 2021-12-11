@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
+import { useForm } from '../../hooks/useForm'
 import { login } from '../../services/Api'
 import { goToAdminHomePage, goToLoginPage, } from '../../Router/goToPages'
-import { GlobalStyle, Container } from './styled'
+import { GlobalStyle, Container, Wrap, CButton, Button,Form } from './styled'
 
 const LoginPage = (props) => {
-
     const history = useHistory()
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
 
     useEffect(() => {
         const token = window.localStorage.getItem("token");
@@ -20,11 +18,21 @@ const LoginPage = (props) => {
         }
     }, [history]);
 
-    const onChangeEmail = (event) => {
-        setEmail(event.target.value)
+    const { form, onChange, resetState } = useForm(
+        {
+            email: '',
+            password: ''
+        })
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        onChange(name, value);
     }
-    const onChangePassword = (event) => {
-        setPassword(event.target.value)
+
+    const formSubmit = (event) => {
+        event.preventDefault()
+        resetState()
+        login(form)
     }
 
 
@@ -32,25 +40,37 @@ const LoginPage = (props) => {
     return (
         <Container>
             <GlobalStyle />
+            <Wrap>
             <h2>Login</h2>
-            <div>
+            <form onSubmit={formSubmit}>
                 <div>
-                    <label>Email</label>
-                    <input type="email"
-                        value={email}
-                        onChange={onChangeEmail}
+                    <label forHtml="email">Email</label>
+                    <input
+                        name="email"
+                        value={form.email}
+                        onChange={handleInputChange}
+                        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                        title="Email invalido"
+                        required
                     />
                 </div>
                 <div>
-                    <label>Senha</label>
-                    <input type="password"
-                        value={password}
-                        onChange={onChangePassword}
+                    <label forHtml="password">Senha</label>
+                    <input
+                        name="password"
+                        value={form.password}
+                        onChange={handleInputChange}
+                        required
                     />
                 </div>
-
-                <button onClick={() => login(email, password, goToAdminHomePage, history)}>Login</button>
-            </div>
+                <CButton>
+                    <Button>
+                        <Form></Form>
+                        <button onclick={goToAdminHomePage(history)}>Login</button>
+                    </Button>
+                </CButton>
+            </form>
+            </Wrap>
         </Container>
     )
 }

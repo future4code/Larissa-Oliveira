@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import {getTripDetail, decideCandidate} from '../../services/Api'
-import { goToLoginPage} from '../../Router/goToPages'
-import {Details,DetailsContent,CandidateInfo,ContainerItem,CandidatesList,BtnTrue,BtnFalse, GlobalStyle} from './styled'
+import { getTripDetail, decideCandidate } from '../../services/Api'
+import { goToLoginPage } from '../../Router/goToPages'
+import { Details, DetailsContent, CandidateInfo, ContainerItem, CandidatesList, BtnTrue, BtnFalse, GlobalStyle } from './styled'
 
 const TripDetailsPage = (props) => {
     const [ trip, setTrip ] = useState({})
@@ -32,8 +32,6 @@ const TripDetailsPage = (props) => {
    
     return(
         <>
-        <GlobalStyle />
-        <p>detalhes da viagem</p>
         <DetailsContent>
             <Details>
                 <h1>Viagem</h1>
@@ -74,4 +72,5 @@ const TripDetailsPage = (props) => {
         </>
     )
 }
+
 export default TripDetailsPage

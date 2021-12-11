@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useForm } from '../../hooks/useForm'
 import { countries } from '../../constants/countries'
 import { applyToTrip, getTrips } from '../../services/Api'
-import { FormContainer, Form, Label, Input, Textarea, Select, GlobalStyle } from './styled'
+import { CButton, FormContainer, Form, Label, Input, Textarea, Select, GlobalStyle } from './styled'
 
 const ApplicationFormPage = () => {
     const [tripList, setTripList] = useState([])
@@ -35,8 +35,8 @@ const ApplicationFormPage = () => {
     return (
         <FormContainer>
             <GlobalStyle />
-            <p>Dados Pessoais</p>
             <Form onSubmit={formSubmit}>
+            <h2>Cadastre-se</h2>
                 <div>
                     <Label>Nome</Label>
                     <Input
@@ -49,7 +49,7 @@ const ApplicationFormPage = () => {
                     />
                 </div>
                 <div>
-                    <label>Idade</label>
+                    <Label>Idade</Label>
                     <Input
                         value={form.age}
                         name='age'
@@ -60,7 +60,7 @@ const ApplicationFormPage = () => {
                     />
                 </div>
                 <div>
-                    <label>Profissão</label>
+                    <Label>Profissão</Label>
                     <Input
                         value={form.profession}
                         name='profession'
@@ -70,7 +70,7 @@ const ApplicationFormPage = () => {
                     />
                 </div>
                 <div>
-                    <label>País</label>
+                    <Label>País</Label>
                     <Select
                         value={form.country}
                         name='country'
@@ -88,7 +88,7 @@ const ApplicationFormPage = () => {
                     </Select>
                 </div>
                 <div>
-                    <label>Viagem</label>
+                    <Label>Viagem</Label>
                     <Select
                         value={form.tripID}
                         name='tripID'
@@ -106,7 +106,7 @@ const ApplicationFormPage = () => {
                     </Select>
                 </div>
                 <div>
-                    <label>Porque você merece essa viagem?</label>
+                    <Label>Porque você merece essa viagem?</Label>
                     <Textarea
                         name='applicationText'
                         value={form.applicationText}
@@ -115,7 +115,9 @@ const ApplicationFormPage = () => {
                         required
                     />
                 </div>
+                <CButton>
                 <button>Enviar a solicitação</button>
+                </CButton>
             </Form>
         </FormContainer>
     )

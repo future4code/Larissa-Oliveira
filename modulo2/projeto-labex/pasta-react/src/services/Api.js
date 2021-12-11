@@ -1,18 +1,21 @@
 import axios from 'axios';
 import { BASE_URL } from '../constants/configApi'
 
-export const login = (email, password, goToDashBoard, history) => {
+
+
+export const login = (user) => {
     const body = {
-        "email": email,
-        "password": password
+        "email": user.email,
+        "password": user.password
     }
     axios.post(`${BASE_URL}/login`, body)
         .then((response) => {
             localStorage.setItem("token", response.data.token)
-            goToDashBoard(history)
+            alert('Logado com sucesso')
         })
         .catch((error) => {
-            // console.log(error.data)
+            alert('Senha errada meu chapa!')
+
         })
 }
 export const getTrips = (setListTrips) => {
@@ -22,7 +25,7 @@ export const getTrips = (setListTrips) => {
             console.log(response.data.trips)
         })
         .catch((error) => {
-            // console.log(error.data)
+
         })
 }
 export const createTrip = (body) => {
@@ -32,20 +35,18 @@ export const createTrip = (body) => {
             alert('Sua viagem foi cadastrada com sucesso!')
         })
         .catch((error) => {
-            // console.log(error.data)
+
         })
 }
-export const getTripDetail = (id, setCandidate, setTrip) => {
+export const getTripDetail = (setTrip, setCandidates, id) => {
     const token = localStorage.getItem('token')
-    axios.get(`${BASE_URL}/trip${id}`, { headers: { auth: token } })
+    axios.get(`${BASE_URL}/trip/${id}`, { headers: { auth: token } })
         .then((response) => {
             setTrip(response.data.trip)
-            setCandidate(response.data.trip.candidates)
-        })
-        .catch((error) => {
-            // console.log(error.data)
+            setCandidates(response.data.trip.candidates)
         })
 }
+
 export const applyToTrip = (user) => {
     const body = {
         "name": user.name,
@@ -54,12 +55,12 @@ export const applyToTrip = (user) => {
         "profession": user.profession,
         "country": user.country
     }
-    axios.post(`${BASE_URL}/trips/${user.tripID}/apply`,body)
-    .then((response)=>{
-        alert('Sua solicitação foi enviada!')
-    })
+    axios.post(`${BASE_URL}/trips/${user.tripID}/apply`, body)
+        .then((response) => {
+            alert('Sua solicitação foi enviada!')
+        })
         .catch((error) => {
-            // console.log(error.data)
+
         })
 }
 export const decideCandidate = (approve, tripId, candidateId) => {
@@ -75,6 +76,7 @@ export const decideCandidate = (approve, tripId, candidateId) => {
                 alert("Candidato recusado!")
         })
 }
+
 
 
 

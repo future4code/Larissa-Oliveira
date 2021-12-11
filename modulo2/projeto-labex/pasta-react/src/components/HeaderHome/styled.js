@@ -7,7 +7,6 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
     }
 `
-
 export const Header = styled.header`
     position:relative;
     overflow:hidden;

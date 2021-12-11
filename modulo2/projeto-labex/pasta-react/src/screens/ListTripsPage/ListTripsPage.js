@@ -5,7 +5,7 @@ import { getTrips } from '../../services/Api'
 import { TripGrid, TripContainer, } from './styled'
 import { goToApplicationFormPage } from '../../Router/goToPages'
 
-const ListTripsPage = (props) => {
+const ListTripsPage = () => {
     const history = useHistory()
     const [tripList, setTripList] = useState([])
 
@@ -24,7 +24,6 @@ const ListTripsPage = (props) => {
                             key={trip.id}
                             tripID={trip.id}
                             data={trip}
-                            handleClick={props.handleClick}
                         />
                         </div>
 

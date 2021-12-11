@@ -12,7 +12,6 @@ const HomePage = () => {
     return (
         <TripContainer>
             <GlobalStyle />
-            <h2>Home</h2>
             <TripGrid>
                 <CardPrivado handleClick={() => goToAdminHomePage(history)} />
                 <CardPublico handleClick={() => goToApplicationFormPage(history)} />

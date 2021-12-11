@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { getTrips } from '../../services/Api'
-import { DashBoardContainer, TripGrid } from './styled'
+import { DashBoardContainer, TripGrid, Card, Button, Info } from './styled'
 import { goToLoginPage, goToTripDetailsPage } from '../../Router/goToPages'
 import TripCard from '../../components/TripCard/TripCard'
 
@@ -11,11 +11,7 @@ const AdminHomePage = (props) => {
 
     useEffect(() => {
         getTrips(setTripList)
-    }, [])
-
-    useEffect(() => {
         const token = window.localStorage.getItem("token");
-
         if (token) {
             history.push('/admin')
         } else {
@@ -27,24 +23,28 @@ const AdminHomePage = (props) => {
         goToTripDetailsPage(history, event.target.id)
     }
 
+    const newListTrips = tripList.map((trip) => {
+        return (
+            <TripCard
+                key={trip.id}
+                tripID={trip.id}
+                data={trip}
+                handleClick={details}
+            />
+        )
+    })
+
+
     return (
-        <DashBoardContainer>  
-                <h2>Viagens</h2>
-                <TripGrid>
-                    {tripList.map((trip) => {
-                        return (
-                            <div onClick={details} >
-                                <TripCard
-                                    key={trip.id}
-                                    tripID={trip.id}
-                                    data={trip}
-                                    handleClick={props.handleClick}
-                                />
-                            </div>
-                        )
-                    })}
-                </TripGrid>
+        <DashBoardContainer>
+            <Info>
+            </Info>
             
+            <TripGrid>
+
+                {newListTrips}
+
+            </TripGrid>
         </DashBoardContainer>
     )
 }

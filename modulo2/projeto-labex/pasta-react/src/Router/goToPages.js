@@ -37,9 +37,9 @@ export const goToCreateTripPage = (history) => {
 }
 
 
-export const goToTripDetailsPage = (history,id) => {
+export const goToTripDetailsPage = (history, id) => {
     const token = window.localStorage.getItem("token");
-        
+
     if (token) {
         history.push(`/admin/detail/${id}`);
     } else {
