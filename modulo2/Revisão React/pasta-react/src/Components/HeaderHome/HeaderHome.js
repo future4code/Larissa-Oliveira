@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom';
 import { Header, NavMenu, Link, Link1, GlobalStyle, Logo, Area } from "./Styled"
-import {Button} from '@material-ui/core'
+import Button from '@material-ui/core/Button'
 
 
 const HeaderAdminPage = (props) => {
