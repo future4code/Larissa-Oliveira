@@ -1,27 +1,33 @@
 import styled from 'styled-components'
-import { createGlobalStyle } from 'styled-components'
 
-export const GlobalStyle = createGlobalStyle`
-    *{
-        margin: 0;
-        padding: 0;
-    }
+export const ScreenContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    margin-top: 10vh;
 `
-
-export const TripContainer = styled.div`
-/* background-color: #fff; */
-width: 100%;
-height: 100%;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-/* background-color: #86BBD8; */
+export const InputsContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80vw;
+    max-width: 450px;
+    margin-bottom: 20px;
 `
-export const TripGrid = styled.div`
-margin:6% 0 0;
-/* background-color: #86BBD8; */
-display:flex;
-flex-wrap: wrap;
-justify-content: center;
+export const LoginFormContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80vw;
+    max-width: 450px;
+    margin-bottom: 20px;
+`
+export const SignUpButtonContainer = styled.div`
+    width: 80vw;
+    max-width: 450px;
+`
+export const LogoImage = styled.img`
+    width: 70vw;
+    max-width: 350px;
 `

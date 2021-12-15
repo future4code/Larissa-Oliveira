@@ -1,25 +1,24 @@
 import React from 'react';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import Button from '@mui/material/Button';
+import { StyledToolbar } from './Styled';
+import { goToReceitas, goToLogin } from '../../Router/Coordinator'
+import { useHistory } from 'react-router-dom'
+
+import logo2 from '../../Assets/Logo2.png'
+import { LogoImage, LogoImage2 } from './Styled'
+
 
 const HeaderLogin = () => {
+  const history = useHistory()
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar variant="dense">
-          <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" color="inherit" component="div">
-            Photos
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <AppBar position="static">
+      <StyledToolbar>
+        <LogoImage2 src={logo2}  onClick={() => goToReceitas(history)} />
+        <Button onClick={() => goToLogin(history)} color="inherit">Login</Button>
+      </StyledToolbar>
+    </AppBar>
   );
 }
+
 export default HeaderLogin

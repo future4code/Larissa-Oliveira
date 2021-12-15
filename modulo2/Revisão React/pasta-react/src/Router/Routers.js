@@ -24,17 +24,14 @@ const Routers = () => {
                 </Route> */}
 
                 <Route exact path={"/login"}>
-                    <HeaderLogin />
                     <LoginPage />
                 </Route>
 
                 <Route exact path={"/cadastro"}>
-                    <HeaderLogin />
                     <CadastroPage />
                 </Route>
 
                 <Route exact path={"/"} >
-                    <HeaderHome />
                     <ReceitasPage />
                 </Route>
 
