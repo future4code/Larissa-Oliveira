@@ -1,12 +1,4 @@
 import styled from 'styled-components'
-import { createGlobalStyle } from 'styled-components'
-
-export const GlobalStyle = createGlobalStyle`
-    *{
-        margin: 0;
-        padding: 0;
-    }
-`
 
 export const TripContainer = styled.div`
 /* background-color: #fff; */
@@ -21,7 +13,10 @@ align-items: center;
 export const TripGrid = styled.div`
 margin:6% 0 0;
 /* background-color: #86BBD8; */
-display:flex;
-flex-wrap: wrap;
-justify-content: center;
+display:grid;
+gridTemplateRows: repeat(3, 1fr);
+display: inline-grid;
+/* grid-template: rows; */
+/* flex-wrap: wrap; */
+/* justify-items: center; */
 `

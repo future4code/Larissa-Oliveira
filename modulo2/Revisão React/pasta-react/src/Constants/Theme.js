@@ -9,13 +9,13 @@ const theme = createTheme({
         
       },
       secondary: {
-        light: secondaryColor,
-        main: quinaryColor,
+        light: quaternaryColor,
+        main: quaternaryColor,
         context: quaternaryColor,
-        contrastText: tertiaryColor,
+        contrastText: quaternaryColor,
       },
       text: {
-        primary: quinaryColor
+        primary: quaternaryColor,
     }
     },
   });
