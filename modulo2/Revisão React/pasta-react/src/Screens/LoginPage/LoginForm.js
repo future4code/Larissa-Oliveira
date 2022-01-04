@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { InputsContainer } from './Styled'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
@@ -7,7 +6,7 @@ import { useForm } from '../../hooks/useForm'
 import { login } from '../../Services/user'
 import { useHistory } from 'react-router-dom'
 
-const LoginForm = () => {
+const LoginForm = ({ setRightButtonText }) => {
     const history = useHistory()
 
     const [form, onChange, resetState] = useForm(
@@ -17,9 +16,8 @@ const LoginForm = () => {
         })
 
     const onSubmitForm = (event) => {
-        login(form, resetState, history)
+        login(form, resetState, history, setRightButtonText)
         event.preventDefault()
-        resetState()
     }
 
 

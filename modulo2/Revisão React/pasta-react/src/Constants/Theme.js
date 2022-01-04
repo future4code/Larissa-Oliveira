@@ -6,10 +6,12 @@ const theme = createTheme({
       primary: {
         main: secondaryColor,
         context: primaryColor
+        
       },
       secondary: {
         light: secondaryColor,
         main: quinaryColor,
+        context: quaternaryColor,
         contrastText: tertiaryColor,
       },
       text: {

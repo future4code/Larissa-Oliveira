@@ -1,8 +1,8 @@
 import React from 'react';
-import useProtectedPage from '../../hooks/useProtectedPage'
+// import useProtectedPage from '../../hooks/useProtectedPage'
 
 const ReceitasPage = () => {
-    useProtectedPage()
+    // useProtectedPage()
     
     return(
         <div>

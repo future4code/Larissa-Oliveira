@@ -5,22 +5,23 @@ import Button from '@material-ui/core/Button'
 import { useForm } from '../../hooks/useForm'
 import { signUp } from '../../Services/user'
 import { useHistory } from 'react-router-dom'
+import useUnprotectedPage from '../../hooks/useUnprotectedPage';
 
-const CadastroForm = () => {
+const CadastroForm = ({setRightButtonText}) => {
     const history = useHistory()
+    useUnprotectedPage()
 
     const [form, onChange, resetState] = useForm(
         {
             username: "",
             email: "",
             password: ""
-        })
+        });
 
-        const onSubmitForm = (event) => {
-            signUp(form, resetState, history)
-            event.preventDefault()
-            resetState()
-        }
+    const onSubmitForm = (event) => {
+        event.preventDefault()
+        signUp(form, resetState, history, setRightButtonText)
+    }
 
     return (
         <InputsContainer>
@@ -34,7 +35,7 @@ const CadastroForm = () => {
                     margin={"dense"}
                     type={"name"}
                     required
-                    autofocus
+                    autoFocus
                     fullWidth
                 />
                 <TextField
