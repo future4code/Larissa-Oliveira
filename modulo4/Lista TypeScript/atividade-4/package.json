@@ -1,0 +1,11 @@
+{
+  "name": "atividade-4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node ./build/index.js"
+  },
+  "author": "Larissa Matos",
+  "license": "ISC"
+}
