@@ -1,23 +1,8 @@
-type  filme = {
-    nome: string,
-    ano: number,
-    genero: string,
-    nota: number
+enum notas {
+    BAIXA = 3,
+    MEDIA = 7,
+    ALTA = 10
 }
-
-type numero = {
-    baixa: number,
-    media: number,
-    alta: number
-}
-
-const notas: numero = 
-    {
-        baixa : 3,
-        media : 7,
-        alta : 10
-    }
-
 
 enum genero {
 	ACAO="ação",
@@ -27,15 +12,8 @@ enum genero {
 	TERROR="terror"
 }
 
-let lista: filme = {
-    nome: "O rato",
-    ano: 2015,
-    genero: genero.COMEDIA,
-    nota: notas.baixa
+function filmes (nome: string, ano: number, genero: string, notas:number):string {
+   return `nome: ${nome}, ano de lançamento: ${ano}, genero: ${genero}, pontuação: ${notas}`
 }
 
-function filmes () {
-    return lista
-}
-
-console.log (lista)
+console.log (filmes("O Rato", 1995, genero.COMEDIA, notas.MEDIA))
