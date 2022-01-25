@@ -33,8 +33,36 @@ type User = {
     phone: string,
     email: string,
     website: string,
-    posts: Post []
 }
+
+const posts = [
+
+    {
+        userId: 1,
+        id: 1,
+        title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        body: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+    },
+    {
+        userId: 2,
+        id: 2,
+        title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        body: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+    },
+    {
+        userId: 3,
+        id: 3,
+        title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        body: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+    },
+    {
+        userId: 3,
+        id: 4,
+        title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        body: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+    }
+
+]
 
 const usuarios: User[] = [
     {
@@ -43,51 +71,20 @@ const usuarios: User[] = [
         phone: "(11)333-333",
         email: "larissa@email.com",
         website: "http://lalalala",
-        posts: [
-
-            {
-                userId: 1,
-                id: 1,
-                title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                body: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-            }
-        ]
-
     },
     {
         id: 2,
         name: "Pedro",
         phone: "(11)111-333",
         email: "pedro@email.com",
-        website: "http://pedro",
-        posts: [
-
-            {
-                userId: 2,
-                id: 2,
-                title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                body: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-            }
-
-        ]
+        website: "http://pedro"
     },
     {
         id: 3,
         name: "Roberta",
         phone: "(11)4444-333",
         email: "roberta@email.com",
-        website: "http://Roberta",
-        posts:
-            [
-                {
-                    userId: 3,
-                    id: 3,
-                    title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                    body: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-                }
-            ]
-
-
+        website: "http://roberta"
     }
 ]
 
@@ -100,18 +97,18 @@ app.get("/users", (req, res) => {
     const userId = currentUser.map((user) => {
         return user
     })
-    // console.log(2, userId)
+    console.log( userId)
 
     const result = userId.flat(1)
     res.status(200).send(result);
 })
 
 app.get("/posts", (req, res) => {
-    const currentUser = usuarios
+    const currentUser = posts
     // console.log(1, currentUser)
 
     const userPosts = currentUser.map((user) => {
-        return user.posts
+        return user
     })
     // console.log(2, userPosts)
 
@@ -120,26 +117,19 @@ app.get("/posts", (req, res) => {
 })
 
 
-app.get("/post", (req, res) => {
-    const idPost = req.query.id
+app.get("/post/:id", (req, res) => {
+    const idPost = Number(req.params.id)
 
     if (!idPost) res.status(400).send('Não é possível realizar a operação. ID do usuário ausente')
 
-    const allPosts = usuarios.map((user: any) => {
-        return user.posts
-    }).flat(1)
-    console.log(allPosts)
-
-
-    let postId
-
-    allPosts.forEach((post: any) => {
-
-        if (post.id === idPost) {
-            postId = post.postId
+    const userPost :Post []= posts.filter((post) => {
+        if (idPost === post.userId) {
+            return post
         }
     })
-    res.status(200).send(postId)
+    console.log(userPost)
+
+    res.status(200).send(userPost)
 
 })
 
