@@ -30,7 +30,7 @@ app.get("/produtos", (req: Request, res: Response) => {
 
     res.status(200).send(listaProdutos)
 })
-// Exercício 3
+// Exercício 3 || Exercício 7
 app.post("/produto", (req: Request, res: Response) => {
     try {
         const { nameProduct, price } = req.body
@@ -76,12 +76,12 @@ app.post("/produto", (req: Request, res: Response) => {
         res.send(error.message)
     }
 })
-// Exercício 5
+// Exercício 5 || Exercício 8
 app.put("/alteraPreco/:id", (req: Request, res: Response) => {
     try {
         const idProduto = req.params.id
 
-        
+
         if (!idProduto) {
             throw new Error('O "id" do produto não foi informado')
         }
@@ -120,7 +120,37 @@ app.put("/alteraPreco/:id", (req: Request, res: Response) => {
                 res.statusCode = 422
                 break;
             default:
-                res.status(500)
+                res.statusCode = 500
+        }
+        res.send(error.message)
+    }
+})
+// Exercício 6 || Exercício 8
+app.delete("/deletarProduto/:id", (req: Request, res: Response) => {
+    try {
+        const idProdutoDel = req.params.id
+
+        let produtoEncontrado = false
+
+        produtos.forEach((produto, index) => {
+            if (produto.id === idProdutoDel) {
+                produtos.splice(index, 1)
+            }
+            produtoEncontrado = true
+        })
+
+        if (!produtoEncontrado) {
+            throw new Error('Produto não encontrado!')
+        }
+        res.status(200).send(produtos)
+
+    } catch (error: any) {
+        switch (error.message) {
+            case 'Produto não encontrado!':
+                res.statusCode = 400
+                break;
+            default:
+                res.statusCode = 500
         }
         res.send(error.message)
     }
