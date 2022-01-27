@@ -47,10 +47,13 @@ app.get("/users", (req: Request, res: Response) => {
 // b) Usando o includes para localizar o nome do type digitado e o toUpperCase para converter a string em maiúsculo
 app.get("/users/search/type", (req: Request, res: Response) => {
     try {
-        const queriedName: any = req.query.type
+        const queriedType = req.query.type as string;
 
-        if (!queriedName) {
+        if (!queriedType) {
             throw new Error("Faltou a query 'type'")
+        }
+        if(queriedType.toUpperCase() !== "NORMAL" &&  queriedType.toUpperCase() !== "ADMIN"){
+            throw new Error('Você só pode pesquisar por "NORMAL" ou "ADMIN"')
         }
 
         let isTypeFound = false
@@ -58,7 +61,7 @@ app.get("/users/search/type", (req: Request, res: Response) => {
         let searchResult: Users = []
 
         for (let types of users) {
-            if (types.type.includes(queriedName.toUpperCase())) {
+            if (types.type.includes(queriedType.toUpperCase())) {
                 searchResult.push({
                     id: types.id,
                     name: types.name,
@@ -88,6 +91,9 @@ app.get("/users/search/type", (req: Request, res: Response) => {
                 break;
             case "O type informado não foi localizado":
                 res.statusCode = 404
+                break;
+            case 'Você só pode pesquisar por "NORMAL" ou "ADMIN"':
+                res.statusCode = 422
                 break;
             default:
                 res.statusCode = 500
@@ -157,6 +163,7 @@ app.put("/adcUser", (req: Request, res: Response) => {
     try {
         const { name, email, type, age } = req.body
 
+
         if (!name || !email || !type || !age) {
             throw new Error('Algum dos campos não foram preenchido!')
         }
@@ -166,7 +173,7 @@ app.put("/adcUser", (req: Request, res: Response) => {
         if (typeof (name || email || type) !== typeof ('string')) {
             throw new Error('Os campos "name", "email" e "type" só podem receber uma string!')
         }
-        if (type !== type.toUpperCase()) {
+        if (type !== type.toUpperCase() ) {
             throw new Error('O campo "type" só podem receber uma string MAIÚSCULA!')
         }
         if (name !== name[0].toUpperCase() + name.substr(1)) {
@@ -174,6 +181,9 @@ app.put("/adcUser", (req: Request, res: Response) => {
         }
         if (typeof (age) !== typeof (1)) {
             throw new Error('O campo "age" só pode receber um number!')
+        }
+        if(type.toUpperCase() !== "NORMAL" &&  type.toUpperCase() !== "ADMIN"){
+            throw new Error('Você só pode inserir no campo type a string "NORMAL" ou "ADMIN"')
         }
 
         users.push({
@@ -206,10 +216,13 @@ app.put("/adcUser", (req: Request, res: Response) => {
             case 'O campo "age" só pode receber um number!':
                 res.statusCode = 422
                 break;
+            case 'Você só pode inserir no campo type a string "NORMAL" ou "ADMIN"':
+                res.statusCode = 422
+                break;
             default:
                 res.statusCode = 500
         }
-        res.send(error.status)
+        // res.send(error.status)
         res.send(error.message)
     }
 })
