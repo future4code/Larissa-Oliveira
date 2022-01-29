@@ -159,7 +159,7 @@ app.get("/users/search/name", (req: Request, res: Response) => {
 // Exercício 4
 // a) Nada mudou
 // b) Não pois o PUT é usado para atualizar recursos e neste caso, estamos criando.
-app.put("/adcUser", (req: Request, res: Response) => {
+app.post("/adcUser", (req: Request, res: Response) => {
     try {
         const { name, email, type, age } = req.body
 
