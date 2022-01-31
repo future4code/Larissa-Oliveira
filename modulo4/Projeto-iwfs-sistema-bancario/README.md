@@ -9,6 +9,8 @@
 
 <p>
 ⚙️ É importante que execute testes no Postman para melhor adaptação.
+<a href="https://www.postman.com/universal-firefly-465943/workspace/tests/documentation/18385856-53a9ba66-6650-4968-b24d-52e8abcaed83">🔗Documentação no Postman</a>
+
 </p>
 
 <h2 align="center">📦 Funcionalidades</h2>
