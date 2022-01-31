@@ -15,18 +15,18 @@
 
 <h2 align="center">📦 Funcionalidades</h2>
 
-<p align="center">Criar e integrar novos usuários.
+<p align="center">Criar e integrar novos usuários.</p>
 
-Buscar usuários dentro da lista
+<p align="center">Buscar usuários dentro da lista</p>
 
-O usuário pode buscar seus débitos e o total atualizado.
+<p align="center"> O usuário pode buscar seus débitos e o total atualizado.</p>
 
-O usuário pode realizar pagamento de contas.
+<p align="center">O usuário pode realizar pagamento de contas.</p>
 
-O usuário pode adicionar dinheiro na conta.
+<p align="center">O usuário pode adicionar dinheiro na conta.
 </p>
 
 
-✒️ Desenvolvido por:
+<p align="center">✒️ Desenvolvido por:</p>
 
-Larissa de Matos Oliveira
+<p align="center">Larissa de Matos Oliveira</p>
