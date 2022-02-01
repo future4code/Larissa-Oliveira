@@ -3,9 +3,10 @@ import { Switch, Route } from 'react-router-dom';
 
 import LoginPage from '../Screens/LoginPage/LoginPage'
 import CadastroPage from '../Screens/CadastroPage/CadastroPage'
-import ReceitasPage from '../Screens/ReceitasPage/ReceitasPage'
-import AdicionarReceitasPage from '../Screens/AdicionarReceitasPage/AdicionarReceitasPage'
-import DetalhesReceitasPage from '../Screens/DetalhesReceitasPage/DetalhesReceitasPage'
+import HomePage from '../Screens/HomePage/HomePage'
+import AdicionarPostPage from '../Screens/AdicionarPostPage/AdicionarPostPage'
+import PostPage from '../Screens/PostPage/PostPage'
+import ErroPage from '../Screens/ErroPage/ErroPage'
 
 const Routers = ({setRightButtonText}) => {
     return (
@@ -20,19 +21,19 @@ const Routers = ({setRightButtonText}) => {
             </Route>
 
             <Route exact path={"/"} >
-                <ReceitasPage />
+                <HomePage />
             </Route>
 
             <Route exact path={"/detalhes/:id"}>
-                <DetalhesReceitasPage />
+                <PostPage />
             </Route>
 
-            <Route exact path={"/adicionarReceitas"}>
-                <AdicionarReceitasPage />
+            <Route exact path={"/AdicionarPost"}>
+                <AdicionarPostPage />
             </Route>
 
             <Route>
-                <h1>Erro 404: A Página Não encontrada</h1>
+                <ErroPage />
             </Route>
         </Switch>
     )

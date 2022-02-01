@@ -7,7 +7,8 @@ export const goToCadastro =(history) => {
     history.replace('/cadastro')
 }
 
-export const goToReceitas = (history) => {
+
+export const goToHome = (history) => {
     history.replace('/')
 }
 
@@ -15,7 +16,7 @@ export const goToDetalhes = (history, id) => {
     history.push(`/detalhes/${id}`);
 }
 
-export const goToAdicionarReceitas = (history) => {
+export const goToAdicionaPost = (history) => {
     const token = window.localStorage.getItem("token");
         
     if (token) {

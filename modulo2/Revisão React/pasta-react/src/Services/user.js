@@ -1,13 +1,13 @@
 import axios from 'axios';
 import {BASE_URL} from '../Constants/ConfigApi'
-import { goToReceitas } from '../Router/Coordinator'
+import { goToHome } from '../Router/Coordinator'
 
 export const login = (body, resetState, history, setRightButtonText) => {
     axios.post(`${BASE_URL}/users/login`, body)
     .then((res)=>{
         localStorage.setItem("token", res.data.token)
         resetState()
-        goToReceitas(history)
+        goToHome(history)
         setRightButtonText("Logout")
     })
     .catch((err)=>
@@ -19,7 +19,7 @@ export const signUp = (body, resetState, history, setRightButtonText) => {
     .then((res)=>{
         localStorage.setItem("token", res.data.token)
         resetState()
-        goToReceitas(history)
+        goToHome(history)
         setRightButtonText("Logout")
         alert("Cadastro efetuado com sucesso")
     })

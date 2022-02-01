@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AdicionarReceitasPage = () => {
+const AdicionarPostPage = () => {
     
     return(
         <div>
@@ -9,4 +9,4 @@ const AdicionarReceitasPage = () => {
     )
 }
 
-export default AdicionarReceitasPage
+export default AdicionarPostPage
