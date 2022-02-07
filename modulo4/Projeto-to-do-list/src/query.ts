@@ -61,8 +61,8 @@ export const getTaskById = async (id: string): Promise<any> => {
             'user_id',
             'nickname as user_id'
         )
-    .leftJoin('ToDoListUser','ToDoListTask.user_id','ToDoListUser.id')
-    .where('ToDoListTask.id', id)
+        .leftJoin('ToDoListUser', 'ToDoListTask.user_id', 'ToDoListUser.id')
+        .where('ToDoListTask.id', id)
     return taskId
 }
 

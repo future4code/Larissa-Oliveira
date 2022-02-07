@@ -1,29 +1,13 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import { AddressInfo } from "net";
-import connection from "./connection";
 import { createUser, getUserById, editUser, createTask, getTaskById } from "./query"
+import { transformDate, certifyEmail } from "./function"
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
-
-
-const transformDate = (date: Date): string => {
-
-  const dd = String(date.getDate()).padStart(2, '0')
-  const mm = String(date.getMonth() + 1).padStart(2, '0')
-  const yyyy = date.getFullYear()
-
-  return dd + '/' + mm + '/' + yyyy;
-}
-
-const certifyEmail = (email: string): boolean => {
-  const pattern = /\S+@\S+\.\S+/;
-  return pattern.test(email);
-};
-
 
 // POST createUser => Criar usuário
 app.post("/user", async (req: Request, res: Response) => {
@@ -120,15 +104,14 @@ app.get("/task/:id", async (req: Request, res: Response) => {
   try {
     const id: string = req.params.id
     let result = await getTaskById(id)
-    // console.log(result)
-
+ 
     if (result.length === 0) {
       errorCode = 422
       throw new Error("Tarefa não localizada")
     }
 
     result[0].limit_date = transformDate(result[0].limit_date)
-    console.log(result)
+    
     res.status(200).send(result)
   } catch (error: any) {
     res.status(errorCode).send({ message: error.sqlMessage || error.message })
