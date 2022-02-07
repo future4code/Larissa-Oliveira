@@ -30,7 +30,7 @@ app.post("/user", async (req: Request, res: Response) => {
     res.status(200).send("O usuário foi criado com sucesso!")
 
   } catch (error: any) {
-    res.status(errorCode).send({ message: error.sqlMessage || error.message })
+    res.status(errorCode).send(error.message)
   }
 })
 
@@ -70,7 +70,7 @@ app.put("/user/edit/:id", async (req: Request, res: Response) => {
     res.status(200).send("O usuário foi editado com sucesso!")
 
   } catch (error: any) {
-    res.status(errorCode).send({ message: error.sqlMessage || error.message })
+    res.status(errorCode).send(error.message)
   }
 })
 
@@ -93,7 +93,7 @@ app.post("/task", async (req: Request, res: Response) => {
     res.status(200).send("A Tarefa foi criada com sucesso!")
 
   } catch (error: any) {
-    res.status(errorCode).send({ message: error.sqlMessage || error.message })
+    res.status(errorCode).send(error.message)
   }
 
 })
@@ -104,17 +104,17 @@ app.get("/task/:id", async (req: Request, res: Response) => {
   try {
     const id: string = req.params.id
     let result = await getTaskById(id)
- 
+
     if (result.length === 0) {
       errorCode = 422
       throw new Error("Tarefa não localizada")
     }
 
     result[0].limit_date = transformDate(result[0].limit_date)
-    
+
     res.status(200).send(result)
   } catch (error: any) {
-    res.status(errorCode).send({ message: error.sqlMessage || error.message })
+    res.status(errorCode).send(error.message)
   }
 })
 
