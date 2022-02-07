@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import { AddressInfo } from "net";
 import connection from "./connection";
-import { User } from "./type"
+import { createUser, getUserById, editUser, createTask, getTaskById } from "./query"
 
 const app = express();
 
@@ -10,91 +10,131 @@ app.use(express.json());
 app.use(cors());
 
 
-// Criar usuário
-const id = Date.now() // gera um id para o usuário
-const createUser = async (
-  name: string,
-  nickname: string,
-  email: string
-): Promise<any> => {
-  await connection("ToDoListUser")
-    .insert({
-      id,
-      name: name,
-      nickname: nickname,
-      email: email
-    });
+const transformDate = (date: Date): string => {
+
+  const dd = String(date.getDate()).padStart(2, '0')
+  const mm = String(date.getMonth() + 1).padStart(2, '0')
+  const yyyy = date.getFullYear()
+
+  return dd + '/' + mm + '/' + yyyy;
+}
+
+const certifyEmail = (email: string): boolean => {
+  const pattern = /\S+@\S+\.\S+/;
+  return pattern.test(email);
 };
 
-// Pegar usuário pelo id
-const getUserById = async (id: number): Promise<any> => {
-  const userId = await connection("ToDoListUser")
-    .select('*')
-    .where('id', id)
-  return userId
-}
 
-// Atualizar dados do usuário
-const editUser = async (id: number, name: string, nickname: string): Promise<any> => {
-  await connection("ToDoListUser")
-    .update({
-      name: name,
-      nickname: nickname
-    })
-    .where('id', id)
-}
-
-// Criar tarefa
-const createTask = async (
-  title: string,
-  description: string,
-  limitDate: string,
-  userId: number
-): Promise<any> => {
-  await connection("ToDoListTask")
-    .insert({
-      title: title,
-      description: description,
-      limit_date: limitDate,
-      user_id: userId
-    });
-};
-
-// Pegar tarefa pelo id
-const getTaskById = async (id: number): Promise<any> => {
-  const taskId = await connection("ToDoListTask")
-    .innerJoin('ToDoListUser',
-      "ToDoListTask.user_id",
-      "ToDoListUser.id")
-    .select('ToDoListTask',
-      "title",
-      "description",
-      "status",
-      "limit_date",
-      "user_id",
-      "ToDoListUser.nickname"
-    )
-  return taskId
-}
-
-
+// POST createUser => Criar usuário
 app.post("/user", async (req: Request, res: Response) => {
   let errorCode = 400
   try {
     const { name, nickname, email } = req.body
+
     if (!name || !nickname || !email) {
       errorCode = 422
-      throw new Error("Um ou mais parâmetro pendente na requisição")
+      throw new Error("Parâmetro pendente.")
     }
+    if (certifyEmail(email) === false) {
+      errorCode = 422
+      throw new Error("E-mail inválido")
+    }
+
 
     await createUser(name, nickname, email)
 
-    res.status(200).send("O Usuário foi criado com sucesso!")
+    res.status(200).send("O usuário foi criado com sucesso!")
 
   } catch (error: any) {
     res.status(errorCode).send({ message: error.sqlMessage || error.message })
   }
 })
+
+// GET getUserById => Pegar usuário pelo id
+app.get("/user/:id", async (req: Request, res: Response) => {
+  let errorCode = 400
+  try {
+    const id: string = req.params.id
+    const result = await getUserById(id)
+
+    if (result.length === 0) {
+      errorCode = 422
+      throw new Error("usuário não localizado")
+    }
+
+    res.status(200).send(result)
+
+  } catch (error: any) {
+    res.status(errorCode).send(error.message)
+  }
+})
+
+// PUT editUser => Atualizar dados do usuário
+app.put("/user/edit/:id", async (req: Request, res: Response) => {
+  let errorCode = 400
+  try {
+    const id: string = req.params.id
+    let { name, nickname } = req.body
+
+    if (!name || !nickname) {
+      res.statusCode = 422
+      throw new Error("Parâmetro pendente.")
+    }
+
+    await editUser(id, name, nickname)
+
+    res.status(200).send("O usuário foi editado com sucesso!")
+
+  } catch (error: any) {
+    res.status(errorCode).send({ message: error.sqlMessage || error.message })
+  }
+})
+
+// POST createTask => Criar tarefa
+app.post("/task", async (req: Request, res: Response) => {
+  let errorCode = 400
+  try {
+    const { title, description, limitDate, creatorUserId } = req.body
+
+    const arrayDate = limitDate.split('/')
+    const formatDate = `${arrayDate[2]}-${arrayDate[1]}-${arrayDate[0]}`
+
+    if (!title || !description || !limitDate || !creatorUserId) {
+      res.statusCode = 422
+      throw new Error("Parâmetro pendente.")
+    }
+
+    await createTask(title, description, formatDate, creatorUserId)
+
+    res.status(200).send("A Tarefa foi criada com sucesso!")
+
+  } catch (error: any) {
+    res.status(errorCode).send({ message: error.sqlMessage || error.message })
+  }
+
+})
+
+// GET getTaskById => Pegar tarefa pelo id
+app.get("/task/:id", async (req: Request, res: Response) => {
+  let errorCode = 400
+  try {
+    const id: string = req.params.id
+    let result = await getTaskById(id)
+    // console.log(result)
+
+    if (result.length === 0) {
+      errorCode = 422
+      throw new Error("Tarefa não localizada")
+    }
+
+    result[0].limit_date = transformDate(result[0].limit_date)
+    console.log(result)
+    res.status(200).send(result)
+  } catch (error: any) {
+    res.status(errorCode).send({ message: error.sqlMessage || error.message })
+  }
+})
+
 
 
 //Servidor
