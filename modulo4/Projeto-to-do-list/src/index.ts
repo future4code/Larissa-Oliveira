@@ -1,13 +1,66 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import { AddressInfo } from "net";
-import { createUser, getUserById, editUser, createTask, getTaskById } from "./query"
+import { createUser, getUserById, editUser, createTask, getTaskById, getAllUsers, deleteUser } from "./query"
 import { transformDate, certifyEmail } from "./function"
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
+
+
+// GET getAllUsers => Pegar todos usuários
+app.get("/user/all", async (req: Request, res: Response) => {
+  let errorCode = 400
+  try {
+    const result = await getAllUsers()
+
+    res.status(200).send({ users: result || [] })
+
+  } catch (error: any) {
+    res.status(errorCode).send(error.message)
+  }
+})
+
+// GET getUserById => Pegar usuário pelo id
+app.get("/user/:id", async (req: Request, res: Response) => {
+  let errorCode = 400
+  try {
+    const id: string = req.params.id
+    const result = await getUserById(id)
+
+    if (result.length === 0) {
+      errorCode = 422
+      throw new Error("usuário não localizado")
+    }
+
+    res.status(200).send(result)
+
+  } catch (error: any) {
+    res.status(errorCode).send(error.message)
+  }
+})
+
+// GET getTaskById => Pegar tarefa pelo id
+app.get("/task/:id", async (req: Request, res: Response) => {
+  let errorCode = 400
+  try {
+    const id: string = req.params.id
+    let result = await getTaskById(id)
+
+    if (result.length === 0) {
+      errorCode = 422
+      throw new Error("Tarefa não localizada")
+    }
+
+    result[0].limit_date = transformDate(result[0].limit_date)
+
+    res.status(200).send(result)
+  } catch (error: any) {
+    res.status(errorCode).send(error.message)
+  }
+})
 
 // POST createUser => Criar usuário
 app.post("/user", async (req: Request, res: Response) => {
@@ -34,23 +87,28 @@ app.post("/user", async (req: Request, res: Response) => {
   }
 })
 
-// GET getUserById => Pegar usuário pelo id
-app.get("/user/:id", async (req: Request, res: Response) => {
+// POST createTask => Criar tarefa
+app.post("/task", async (req: Request, res: Response) => {
   let errorCode = 400
   try {
-    const id: string = req.params.id
-    const result = await getUserById(id)
+    const { title, description, limitDate, userId } = req.body
 
-    if (result.length === 0) {
-      errorCode = 422
-      throw new Error("usuário não localizado")
+    const arrayDate = limitDate.split('/')
+    const formatDate = `${arrayDate[2]}-${arrayDate[1]}-${arrayDate[0]}`
+
+    if (!title || !description || !limitDate || !userId) {
+      res.statusCode = 422
+      throw new Error("Parâmetro pendente.")
     }
 
-    res.status(200).send(result)
+    await createTask(title, description, formatDate, userId)
+
+    res.status(200).send("A Tarefa foi criada com sucesso!")
 
   } catch (error: any) {
     res.status(errorCode).send(error.message)
   }
+
 })
 
 // PUT editUser => Atualizar dados do usuário
@@ -74,49 +132,26 @@ app.put("/user/edit/:id", async (req: Request, res: Response) => {
   }
 })
 
-// POST createTask => Criar tarefa
-app.post("/task", async (req: Request, res: Response) => {
+// DELETE getAllUsers => Pegar todos usuários
+app.delete("/user/:id", async (req: Request, res: Response) => {
   let errorCode = 400
   try {
-    const { title, description, limitDate, creatorUserId } = req.body
+    const id = req.params.id
 
-    const arrayDate = limitDate.split('/')
-    const formatDate = `${arrayDate[2]}-${arrayDate[1]}-${arrayDate[0]}`
-
-    if (!title || !description || !limitDate || !creatorUserId) {
+    if (!id) {
       res.statusCode = 422
       throw new Error("Parâmetro pendente.")
     }
 
-    await createTask(title, description, formatDate, creatorUserId)
+    await deleteUser(id)
 
-    res.status(200).send("A Tarefa foi criada com sucesso!")
+    res.status(200).send("O usuário foi deletado com sucesso!")
 
   } catch (error: any) {
     res.status(errorCode).send(error.message)
   }
-
 })
 
-// GET getTaskById => Pegar tarefa pelo id
-app.get("/task/:id", async (req: Request, res: Response) => {
-  let errorCode = 400
-  try {
-    const id: string = req.params.id
-    let result = await getTaskById(id)
-
-    if (result.length === 0) {
-      errorCode = 422
-      throw new Error("Tarefa não localizada")
-    }
-
-    result[0].limit_date = transformDate(result[0].limit_date)
-
-    res.status(200).send(result)
-  } catch (error: any) {
-    res.status(errorCode).send(error.message)
-  }
-})
 
 
 

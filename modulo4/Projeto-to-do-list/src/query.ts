@@ -24,6 +24,13 @@ export const getUserById = async (id: string): Promise<any> => {
     return userId
 }
 
+// Função => Pegar todos usuários
+export const getAllUsers = async (): Promise<any> => {
+    const result = await connection("ToDoListUser")
+        .select('ToDoListUser.id', 'ToDoListUser.nickname')
+    return result
+}
+
 // Função => Atualizar dados do usuário
 export const editUser = async (id: string, name: string, nickname: string): Promise<any> => {
     await connection("ToDoListUser")
@@ -66,3 +73,10 @@ export const getTaskById = async (id: string): Promise<any> => {
     return taskId
 }
 
+
+// Função => Deleta usuário pelo id
+export const deleteUser = async (id: string): Promise<void> => {
+    await connection("ToDoListUser")
+        .where("id", id)
+        .del()
+}
