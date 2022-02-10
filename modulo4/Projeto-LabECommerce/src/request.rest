@@ -1,0 +1,43 @@
+GET http://localhost:3003/users
+Content-Type: application/json
+# Retorna uma lista com todos os usuários cadastrados no banco
+
+###
+GET http://localhost:3003/products
+Content-Type: application/json
+# Retorna uma lista com todos os produtos cadastrados no banco
+###
+GET http://localhost:3003/purchases
+Content-Type: application/json
+# Retornar uma lista com todas as compras do usuário especificado
+
+###
+POST http://localhost:3003/users
+Content-Type: application/json
+# Cadastra um novo usuário no banco através do body
+{
+    "name": "larissa",
+    "email": "larissa@gmail.com",
+    "password": "senha123"
+}
+
+###
+POST http://localhost:3003/products
+Content-Type: application/json
+# Cadastra um novo produto no banco através do body
+{
+    "name": "pão de queijo",
+    "price": 10.90,
+    "imageUrl": "https://vovopalmirinha.com.br/wp-content/uploads/2019/06/pao-de-queijo.jpg"
+}
+
+###
+POST http://localhost:3003/purchases
+Content-Type: application/json
+# Realiza a compra de um produto no banco através do body
+{
+    "userId": "1644520791687",
+    "productId": "1644523549607",
+    "quantity": 1
+}
+###
