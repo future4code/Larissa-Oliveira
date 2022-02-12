@@ -1,6 +1,7 @@
 export type Purchases = {
-    userId: string,
-    productId: string,
+    id: string,
+    user_id: string,
+    product_id: string,
     quantity: number,
-    totalPrice: number,
+    total_price: number
 }

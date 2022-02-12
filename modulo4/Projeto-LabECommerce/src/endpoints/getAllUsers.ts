@@ -1,14 +1,12 @@
 import { Request, Response } from "express"
-import { connection } from "../data/connection"
-import { User } from "../types/User"
+import { selectUsers } from "../services/selectUsers"
 
 const getAllUsers = async (req: Request, res: Response) => {
     try {
-        
-        const result: User = await connection("labecommerce_users")
-            .select("labecommerce_users.id", "labecommerce_users.name")
+        await selectUsers()
 
-        res.status(200).send({ users: result || [] })
+        res.status(200).send({ Users: selectUsers })
+
     } catch (error) {
         if (error instanceof Error) {
             res.send({ error, message: error.message })
