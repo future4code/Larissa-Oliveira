@@ -1,0 +1,12 @@
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "email": "testatudodev@gmail.com",
+    "senha": "123456",
+    "cep": "05044050",
+    "numero": "98",
+    "complemento": "Do lado da dona Florinda"
+}
+
+###
