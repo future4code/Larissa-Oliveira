@@ -1,0 +1,20 @@
+
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+   "email": "la5asd2ae@matos.com" ,
+   "password": "ihatepeter"
+}
+
+###
+GET http://localhost:3003/user?email=laa2ae@matos.com
+Content-Type: application/json
+###
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+   "email": "la5ad2ae@matos.com" ,
+   "password": "ihatepeter"
+}
