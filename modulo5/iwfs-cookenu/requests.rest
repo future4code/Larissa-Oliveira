@@ -10,9 +10,11 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3003/user?email=Larissa@matos.com
+GET http://localhost:3003/user/dab1855e-fd4c-4282-976f-6ce9697c844d
 Content-Type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYxZGM3NWM5LWUzNzgtNDVjNi1hOTY5LTI0NDBjMmQ4Y2ZlYSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY0NTkzNDY0NSwiZXhwIjoxNjQ1OTM4MjQ1fQ.wuKCHGRn-CEwDxGUb6OuEMBNyoIJmnC69wb9s-9_OR8
 ###
+
 POST http://localhost:3003/login
 Content-Type: application/json
 
@@ -23,4 +25,19 @@ Content-Type: application/json
 ###
 GET http://localhost:3003/user/profile 
 Content-Type: application/json 
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJkM2M3NTEwLTY2OTktNDM2OS04MmVhLTAxMGU1YTM4MDJiOCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NDU5MzEwMjgsImV4cCI6MTY0NTkzNDYyOH0.I4g_EmnNPGe8fjZ7LxVZHNEzFpW_QxRBo857_29wG8g
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYxZGM3NWM5LWUzNzgtNDVjNi1hOTY5LTI0NDBjMmQ4Y2ZlYSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY0NTkzNDY0NSwiZXhwIjoxNjQ1OTM4MjQ1fQ.wuKCHGRn-CEwDxGUb6OuEMBNyoIJmnC69wb9s-9_OR8
+}
+###
+POST http://localhost:3003/recipe 
+Content-Type: application/json 
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJkM2M3NTEwLTY2OTktNDM2OS04MmVhLTAxMGU1YTM4MDJiOCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NDU5OTgyNjQsImV4cCI6MTY0NjAwMTg2NH0.dsJThbYIaDrbxcoNcUhCJaG7yNLxqW6Y6gjRURSV8t0
+
+{
+   "title": "Ovo cozido",
+	"description": "Espere a água ferver, adcione o ovo, se ele estiver refrigerado espera 7 minutos caso não espere 5"
+}
+
+###
+GET http://localhost:3003/recipe/965cbf28-c5b7-48d1-98e7-ae7aa942a889
+Content-Type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJkM2M3NTEwLTY2OTktNDM2OS04MmVhLTAxMGU1YTM4MDJiOCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NDU5OTgyNjQsImV4cCI6MTY0NjAwMTg2NH0.dsJThbYIaDrbxcoNcUhCJaG7yNLxqW6Y6gjRURSV8t0

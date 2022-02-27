@@ -1,8 +1,8 @@
 import moment from "moment"
 
 export class FormatDate {
-    private date: string
-    constructor(date: string) {
+    private date: string | Date
+    constructor(date: string | Date) {
         this.date = date
     }
     formatUTC() {
