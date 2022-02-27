@@ -1,22 +1,24 @@
 
-POST http://localhost:3003/user/signup
+POST http://localhost:3003/signup
 Content-Type: application/json
 
-{
-   "email": "Larisasa@matos.com" ,
-   "password": "ihatepeter"
+{  
+   "name": "Larissa",
+   "email": "Larisassa@matos.com" ,
+   "password": "iSatepeter",
+   "role": "ADMIN"
 }
 
 ###
 GET http://localhost:3003/user?email=Larissa@matos.com
 Content-Type: application/json
 ###
-POST http://localhost:3003/user/login
+POST http://localhost:3003/login
 Content-Type: application/json
 
 {
-   "email": "Larissa@matos.com" ,
-   "password": "ihatepeter"
+   "email": "Larisassa@matos.com" ,
+   "password": "iSatepeter"
 }
 ###
 GET http://localhost:3003/user/profile

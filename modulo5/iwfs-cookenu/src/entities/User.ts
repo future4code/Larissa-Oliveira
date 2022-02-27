@@ -5,6 +5,7 @@ export enum USER_ROLES {
 
 
 export class User {
+    
     constructor(
         private id: string,
         private name: string,
@@ -13,8 +14,16 @@ export class User {
         private role: USER_ROLES
     ) { }
 
-    static toUserModel(data: any) {
-        return new User(data.id, data.name, data.email, data.password, data.role);
+    static toUserModel(data: any): User {
+        return new User(data.id, data.name, data.email, data.password, data.role)
+    }
+
+    public getUserInfo(){
+        return{
+            id: this.id,
+            name: this.name,
+            email: this.email
+        }
     }
 
     public getId(): string {
@@ -29,7 +38,7 @@ export class User {
     public getPassword(): string {
         return this.password
     }
-    public getRole(): string {
+    public getRole() {
         return this.role
     }
 }

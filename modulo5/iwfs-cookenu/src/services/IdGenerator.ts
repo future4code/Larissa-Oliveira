@@ -1,7 +1,12 @@
 import { v4 } from 'uuid';
 
 export class IdGenerator {
-    public generate() {
-        return v4();
+    private id: string
+    constructor() {
+        this.id = v4()
+    }
+
+    public getId() {
+        return this.id
     }
 }

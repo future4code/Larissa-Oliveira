@@ -1,5 +1,4 @@
 import { JwtPayload, sign, verify } from "jsonwebtoken"
-import { isJSDocReturnTag } from "typescript";
 import { USER_ROLES } from '../entities/User';
 
 export interface AuthenticationData {
@@ -8,10 +7,16 @@ export interface AuthenticationData {
 }
 
 export class Authenticator {
-    public GenerateToken(input: AuthenticationData): string {
-        const token = sign(input, process.env.JWT_KEY as string, {
-            expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN
-        });
+    public GenerateToken = (input: AuthenticationData): string => {
+        const token = sign(
+            {
+                id: input.id,
+                role: input.role
+            },
+            process.env.JWT_KEY as string,
+            { expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN }
+        );
+        console.log(`Esta chegando aqui`)
         return token;
     }
 
@@ -22,11 +27,12 @@ export class Authenticator {
                 process.env.JWT_KEY as string
             ) as JwtPayload
 
-            return {
+            const result = {
                 id: tokenData.id,
                 role: tokenData.role
-            } as AuthenticationData
+            }
 
+            return result
         } catch (error: any) {
             console.log(error)
             return null
