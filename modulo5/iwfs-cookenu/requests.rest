@@ -3,8 +3,8 @@ POST http://localhost:3003/signup
 Content-Type: application/json
 
 {  
-   "name": "Larissa",
-   "email": "Larisassa@matos.com" ,
+   "name": "Roberto",
+   "email": "Roberto@email.com" ,
    "password": "iSatepeter",
    "role": "ADMIN"
 }
@@ -17,10 +17,10 @@ POST http://localhost:3003/login
 Content-Type: application/json
 
 {
-   "email": "Larisassa@matos.com" ,
+   "email": "Bruna2@email.com" ,
    "password": "iSatepeter"
 }
 ###
-GET http://localhost:3003/user/profile
-Content-Type: application/json
-Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFiOGQ0MjhkLThmNTUtNDI5NS1iNWFiLWNkMGI0MGY0ODNjNyIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NDU1Njk1NjksImV4cCI6MTY0NTU2OTU3M30.MZj2xYubrxJBTpUr5ZZAap8Gk-DpdchPfkkH1iM2Eds"
+GET http://localhost:3003/user/profile 
+Content-Type: application/json 
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJkM2M3NTEwLTY2OTktNDM2OS04MmVhLTAxMGU1YTM4MDJiOCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NDU5MzEwMjgsImV4cCI6MTY0NTkzNDYyOH0.I4g_EmnNPGe8fjZ7LxVZHNEzFpW_QxRBo857_29wG8g

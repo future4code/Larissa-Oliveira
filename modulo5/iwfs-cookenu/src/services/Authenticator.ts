@@ -16,26 +16,23 @@ export class Authenticator {
             process.env.JWT_KEY as string,
             { expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN }
         );
-        console.log(`Esta chegando aqui`)
+
         return token;
     }
 
-    public GetTokenData = (token: string) => {
-        try {
-            const tokenData = verify(
-                token,
-                process.env.JWT_KEY as string
-            ) as JwtPayload
+    public GetTokenData = (token: string): AuthenticationData => {
 
-            const result = {
-                id: tokenData.id,
-                role: tokenData.role
-            }
+        const tokenData = verify(
+            token,
+            process.env.JWT_KEY as string
+        ) as JwtPayload
 
-            return result
-        } catch (error: any) {
-            console.log(error)
-            return null
+        const result = {
+            id: tokenData.id,
+            role: tokenData.role
         }
+
+        return result
+
     }
 }
