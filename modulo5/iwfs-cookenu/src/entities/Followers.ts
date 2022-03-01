@@ -1,4 +1,4 @@
-export class Recipe {
+export class Followers {
 
     constructor(
         private id: string,
@@ -6,11 +6,11 @@ export class Recipe {
         private user_id: string,
     ) { }
 
-    static toRecipeModel(data: any): Recipe {
-        return new Recipe(data.id, data.follow, data.user_id)
+    static toFollowerModel(data: any): Followers {
+        return new Followers(data.id, data.follow, data.user_id)
     }
 
-    public getUserInfo() {
+    public getFollowerInfo() {
         return {
             id: this.id,
             title: this.follow,
@@ -21,7 +21,7 @@ export class Recipe {
     public getId(): string {
         return this.id
     }
-    public getFollow(): string {
+    public getFollow(){
         return this.follow
     }
     public getUser_id(): string {

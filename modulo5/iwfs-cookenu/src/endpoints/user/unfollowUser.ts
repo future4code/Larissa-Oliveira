@@ -1,17 +1,15 @@
 import { Request, Response } from 'express';
 import { FollowerDataBase } from '../../data/FollowerDataBase';
 import { UserDataBase } from '../../data/UserDataBase';
-import { Followers } from '../../entities/Followers';
 import { Authenticator } from '../../services/Authenticator';
-
 import { IdGenerator } from '../../services/IdGenerator';
 
-export async function followUser(req: Request, res: Response) {
+export async function unfollowUser(req: Request, res: Response) {
     let errorCode = 400
     try {
 
         const token: string = req.headers.authorization as string
-        const { userToFollowId } = req.body
+        const { userToUnfollowId } = req.body
 
         const idGenerator = new IdGenerator();
         const id = idGenerator.getId()
@@ -21,7 +19,7 @@ export async function followUser(req: Request, res: Response) {
             throw new Error("You must be logged in to create a recipe")
         }
 
-        if (!userToFollowId) {
+        if (!userToUnfollowId) {
             errorCode = 422
             throw new Error("Enter the user id")
         }
@@ -30,7 +28,8 @@ export async function followUser(req: Request, res: Response) {
 
         const userDataBase = new UserDataBase();
         const followerId = await userDataBase.findUserById(follower.id);
-        const followId = await userDataBase.findUserById(userToFollowId)
+        const followId = await userDataBase.findUserById(userToUnfollowId)
+        
         if(!followId){
             errorCode = 404
             throw new Error("User not found")
@@ -39,18 +38,16 @@ export async function followUser(req: Request, res: Response) {
         const followerDataBase = new FollowerDataBase();
         const verifyFollow = await followerDataBase.findFollowerByUser(followId.getId(),followerId.getId())
         
-        if(verifyFollow){
+        if(!verifyFollow){
             errorCode = 422
-            followerDataBase.deleteFollow(followId.getId())
-            throw new Error(`You unfollowed ${followId.getName()}`)
+            throw new Error(`You already unfollowed ${followId.getName()}`)
         }
-
-        const newFollower: Followers = new Followers(id, followId.getId(), followerId.getId())
-        await followerDataBase.createFollower(newFollower)
+    
+        await followerDataBase.deleteFollow(followId.getId())
 
 
         res.status(201).send({
-            message: ` Followed ${followId.getName()} successfully`
+            message: ` Unfollowed ${followId.getName()} successfully`
         });
     } catch (error: any) {
         if (res.statusCode === 200) {

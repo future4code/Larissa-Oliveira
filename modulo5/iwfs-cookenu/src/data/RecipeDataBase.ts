@@ -21,25 +21,37 @@ export class RecipeDataBase extends BaseDataBase {
     }
 
 
-    public async findRecipeByUser(creatorId: string): Promise<Recipe> {
+    public async getAllRecipes(): Promise<Recipe> {
         try {
-        const [recipe] = await BaseDataBase
-        .connection(RecipeDataBase.tableName)
-        .select("*")
-        .where({ creatorId })
+            const [result] = await BaseDataBase
+                .connection(RecipeDataBase.tableName)
 
-        return recipe && Recipe.toRecipeModel(recipe);
+            return result
         } catch (error: any) {
             throw new Error(error.sqlMessage || error.message)
         }
     }
+
+    public async findRecipeByUser(creatorId: string): Promise<Recipe> {
+        try {
+            const [recipe] = await BaseDataBase
+                .connection(RecipeDataBase.tableName)
+                .select("*")
+                .where({ creatorId })
+
+            return recipe && Recipe.toRecipeModel(recipe);
+        } catch (error: any) {
+            throw new Error(error.sqlMessage || error.message)
+        }
+    }
+
     public async findRecipeById(id: string): Promise<Recipe> {
         try {
-        const [recipe] = await BaseDataBase
-        .connection(RecipeDataBase.tableName)
-        .where({ id })
+            const [recipe] = await BaseDataBase
+                .connection(RecipeDataBase.tableName)
+                .where({ id })
 
-        return recipe && Recipe.toRecipeModel(recipe);
+            return recipe && Recipe.toRecipeModel(recipe);
         } catch (error: any) {
             throw new Error(error.sqlMessage || error.message)
         }

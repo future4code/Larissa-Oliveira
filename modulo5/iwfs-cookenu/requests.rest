@@ -41,3 +41,28 @@ authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJkM2M3NTEwLTY2OTkt
 GET http://localhost:3003/recipe/965cbf28-c5b7-48d1-98e7-ae7aa942a889
 Content-Type: application/json
 authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJkM2M3NTEwLTY2OTktNDM2OS04MmVhLTAxMGU1YTM4MDJiOCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NDU5OTgyNjQsImV4cCI6MTY0NjAwMTg2NH0.dsJThbYIaDrbxcoNcUhCJaG7yNLxqW6Y6gjRURSV8t0
+
+
+###
+POST http://localhost:3003/user/follow
+Content-Type: application/json 
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJkM2M3NTEwLTY2OTktNDM2OS04MmVhLTAxMGU1YTM4MDJiOCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NDYwOTgzMTcsImV4cCI6MTY0NjEwMTkxN30.sLtJTxjG-z4DFQIwFVXB0rN7hJhmxokZOWGdbqiEm_E
+
+{
+   "userToFollowId": "6d77b91b-d343-46a9-afba-f1c5a6e9976d"
+}
+
+###
+POST http://localhost:3003/user/unfollow
+Content-Type: application/json 
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJkM2M3NTEwLTY2OTktNDM2OS04MmVhLTAxMGU1YTM4MDJiOCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NDYwOTgzMTcsImV4cCI6MTY0NjEwMTkxN30.sLtJTxjG-z4DFQIwFVXB0rN7hJhmxokZOWGdbqiEm_E
+
+{
+   "userToUnfollowId": "6d77b91b-d343-46a9-afba-f1c5a6e9976d"
+}
+
+
+###
+GET http://localhost:3003/user/feed
+Content-Type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJkM2M3NTEwLTY2OTktNDM2OS04MmVhLTAxMGU1YTM4MDJiOCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NDYxMDg0NzEsImV4cCI6MTY0NjExMjA3MX0.BCqabUSPcRAf6g_yiyljdQDp35Ixxf9lkQr6ayUbnJ4

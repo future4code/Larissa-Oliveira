@@ -7,7 +7,7 @@ export async function profile(req: Request, res: Response) {
     let errorCode = 400
     try {
         const token = req.headers.authorization as string
-
+        console.log(token)
         if (!token) {
             errorCode = 422
             throw new Error("Missing token")
