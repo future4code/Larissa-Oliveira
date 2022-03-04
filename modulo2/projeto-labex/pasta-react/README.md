@@ -22,10 +22,6 @@ A ideia do projeto é de criar uma plataforma de gerenciamento de viagens espaci
 * **Larissa Matos** - *Documentação* - [Larissa Matos](https://github.com/MatosLarissa)
 
 
-## 🎁 Gratidão
-
-* A [Labenu](https://github.com/future4code) por me proporcionar este grande aprendizado e um bom suporte emocional 📢 
-
 
 
 ---
