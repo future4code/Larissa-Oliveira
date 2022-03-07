@@ -5,7 +5,7 @@
 <p align="center">
   <img width="40%" src="https://media1.giphy.com/media/QJ8bR5An4VC59FvVcx/giphy.gif?cid=790b761168d7212098e7d21ef1ff03768cda8d5ace16e640&rid=giphy.gif&ct=s" alt="Logo">
 </p>
-<h2>⚛️ﾠSobre o LabenuSystem!</h2>
+<h2>⚛️ﾠSobre o Iwfs-cookenu!</h2>
 <p>Este Projeto Back-End foi desenvolvido durante o curso Full-Stack Web Developer na <a href="https://www.labenu.com.br/quem-somos" target="_blank">Labenu</a>, teve o foco no desenvolvimento da API que representa uma rede social, na qual os usuários podem dividir informações relevantes sobre comidas e receitas que tenham experimentado. Ela possui todas as funcionalidades mais comuns em redes sociais. Os dados são criados e armazenados no MySQL e todo o desenvolvimento da aplicação foi realizado em TypeScript.
 </p><br/>
 
