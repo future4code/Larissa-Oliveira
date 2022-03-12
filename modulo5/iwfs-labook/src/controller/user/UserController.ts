@@ -4,10 +4,10 @@ import UserBusiness, { SignupInputDTO } from '../../business/user/UserBusiness'
 import UserData from '../../data/UserData'
 
 export default class UserController{
-    private userBusiness: UserBusiness
-    constructor(){
-        this.userBusiness = new UserBusiness(new UserData())
-    }
+    
+    constructor(
+        private userBusiness: UserBusiness
+    ){}
 
 
     signup = async (req: Request, res:Response) =>{

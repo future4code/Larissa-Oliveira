@@ -3,7 +3,7 @@ import { AuthenticationData } from "../model/User"
 
 export class Authenticator {
 
-  public static generateToken(
+  public generateToken(
     payload: AuthenticationData
   ): string {
     return jwt.sign(
@@ -15,7 +15,7 @@ export class Authenticator {
     )
   }
 
-  public static getTokenData(
+  public getTokenData(
     token: string
   ): AuthenticationData {
     const data = jwt.verify(

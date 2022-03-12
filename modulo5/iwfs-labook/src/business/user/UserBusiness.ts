@@ -11,12 +11,12 @@ export type SignupInputDTO = {
 }
 
 
-export default class UserBusiness{
-    private userData:UserRepository
-    private idGenerator:IdGenerator
-    private hashManager:HashManager
-    private authenticator:Authenticator
-    constructor(userDataImplementation:UserRepository){
+export default class UserBusiness {
+    private userData: UserRepository
+    private idGenerator: IdGenerator
+    private hashManager: HashManager
+    private authenticator: Authenticator
+    constructor(userDataImplementation: UserRepository) {
         this.userData = userDataImplementation
         this.idGenerator = new IdGenerator()
         this.hashManager = new HashManager()
@@ -24,17 +24,17 @@ export default class UserBusiness{
     }
 
 
-    signup = async (input: SignupInputDTO) =>{
-        
-        const {name, email, password} = input
-        if(!email || !name || !password){
+    signup = async (input: SignupInputDTO) => {
+
+        const { name, email, password } = input
+        if (!email || !name || !password) {
             throw new Error("Campos inválidos")
         }
 
 
-        const registeredUser = await this.userData.findByEmail(email)
-        if(registeredUser){
-            throw new Error ("Email já cadastrado")
+        const registeredUser = await this.userData.findBy(email)
+        if (registeredUser) {
+            throw new Error("Email já cadastrado")
         }
 
         //criar um id
@@ -48,30 +48,28 @@ export default class UserBusiness{
             email,
             hashedPassword
         )
-        console.log(user)
-        await this.userData.insert(user)
+
+        const createUser = await this.userData.insert(user)
         //gerar e retornar token
-        const token = this.authenticator.generateToken({id})
+        const token = this.authenticator.generateToken({ id })
         return token
     }
-    login = async (input: SignupInputDTO) =>{
-        
-        const {email, password} = input
-        if(!email || !password){
+    login = async (input: SignupInputDTO) => {
+
+        const { email, password } = input
+        if (!email || !password) {
             throw new Error("Campos inválidos")
         }
 
 
-        const registeredUser = await this.userData.findByEmail(email)
-        if(!!registeredUser){
-            throw new Error ("Email não cadastrado")
+        const user = await this.userData.findBy(email)
+        if (!user) {
+            throw new Error("Email não cadastrado")
         }
-        
 
-        const token: Authenticator = {
-            // id: registeredUser.id,
-            // email
-        }
+
+
+        const token = this.authenticator.generateToken({ id: user.id })
 
         return token
     }
