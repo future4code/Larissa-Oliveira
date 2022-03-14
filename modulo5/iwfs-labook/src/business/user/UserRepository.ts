@@ -1,6 +1,6 @@
-import User from "../../model/User"
+import {User} from "../../model/User"
 
 export interface UserRepository{
-    insert(user: User):Promise<User>
-    findBy(email: string):Promise<User[]>
+    creatUser(user: User):Promise<void>
+    findByEmail(email: string):Promise<User | null>
 }

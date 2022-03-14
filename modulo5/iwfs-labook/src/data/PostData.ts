@@ -1,7 +1,7 @@
 import { PostRepository } from "../business/post/PostRepository";
 import { UserRepository } from "../business/user/UserRepository";
 import Post from "../model/Post";
-import BaseDatabase from "./BaseDatabase";
+import {BaseDatabase} from "./BaseDatabase";
 
 export default class PostData extends BaseDatabase implements PostRepository{
     protected TABLE_NAME = "labook_users"

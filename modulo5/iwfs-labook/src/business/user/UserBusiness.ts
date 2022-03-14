@@ -1,4 +1,4 @@
-import User from "../../model/User";
+import { User } from "../../model/User";
 import { Authenticator } from "../../services/Authenticator";
 import { HashManager } from "../../services/HashManager";
 import { IdGenerator } from "../../services/IdGenerator";
@@ -6,6 +6,10 @@ import { UserRepository } from "./UserRepository";
 
 export type SignupInputDTO = {
     name: string,
+    email: string,
+    password: string
+}
+export type LoginInputDTO = {
     email: string,
     password: string
 }
@@ -32,7 +36,9 @@ export default class UserBusiness {
         }
 
 
-        const registeredUser = await this.userData.findBy(email)
+
+        const registeredUser = await this.userData.findByEmail(email)
+        // console.log(registeredUser[0],"aqui")
         if (registeredUser) {
             throw new Error("Email já cadastrado")
         }
@@ -49,12 +55,12 @@ export default class UserBusiness {
             hashedPassword
         )
 
-        const createUser = await this.userData.insert(user)
+        const createUser = await this.userData.creatUser(user)
         //gerar e retornar token
         const token = this.authenticator.generateToken({ id })
         return token
     }
-    login = async (input: SignupInputDTO) => {
+    login = async (input: LoginInputDTO) => {
 
         const { email, password } = input
         if (!email || !password) {
@@ -62,13 +68,16 @@ export default class UserBusiness {
         }
 
 
-        const user = await this.userData.findBy(email)
+        const user = await this.userData.findByEmail(email)
+
         if (!user) {
             throw new Error("Email não cadastrado")
         }
 
-
-
+        const passwordVerification = await this.hashManager.compare(password, user.password)
+        if (!passwordVerification) {
+            throw new Error("Senha inválida")
+        }
         const token = this.authenticator.generateToken({ id: user.id })
 
         return token
