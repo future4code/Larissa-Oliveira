@@ -20,6 +20,6 @@ Content-Type: application/json
    "password": "ihatepeter"
 }
 ###
-GET http://localhost:3003/user/profile
+POST http://localhost:3003/user/follow/?id=63e13f83-54dd-4981-a31c-9a4ae8e03aed
 Content-Type: application/json
-Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFiOGQ0MjhkLThmNTUtNDI5NS1iNWFiLWNkMGI0MGY0ODNjNyIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NDU1Njk1NjksImV4cCI6MTY0NTU2OTU3M30.MZj2xYubrxJBTpUr5ZZAap8Gk-DpdchPfkkH1iM2Eds"
+Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkNmVjM2M4LTJlMmUtNDUzZi1hNmViLTVkNDVkM2ZiYTdkNiIsImlhdCI6MTY0NzMwMjkwMCwiZXhwIjoxNjQ3MzA0MzQwfQ.qFV_EOsZWUPZGlilxgYayKaDwsmY7ebj7SzWRy7m8Aw"

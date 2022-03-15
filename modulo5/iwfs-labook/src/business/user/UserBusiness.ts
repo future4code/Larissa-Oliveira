@@ -1,3 +1,4 @@
+import { Follow } from "../../model/Follow";
 import { User } from "../../model/User";
 import { Authenticator } from "../../services/Authenticator";
 import { HashManager } from "../../services/HashManager";
@@ -13,9 +14,14 @@ export type LoginInputDTO = {
     email: string,
     password: string
 }
+export type followInputDTO = {
+    idFollowed: string,
+    token: string | undefined
+}
 
 
 export default class UserBusiness {
+
     private userData: UserRepository
     private idGenerator: IdGenerator
     private hashManager: HashManager
@@ -81,5 +87,74 @@ export default class UserBusiness {
         const token = this.authenticator.generateToken({ id: user.id })
 
         return token
+    }
+
+    followUser = async (input: followInputDTO) => {
+
+
+        const { idFollowed, token } = input
+        console.log(idFollowed)
+        if (!idFollowed) {
+            throw new Error("Campos inválidos")
+        }
+
+        if (!token) {
+            throw new Error("Token não informado")
+        }
+        const tokenData = this.authenticator.getTokenData(token)
+        if (tokenData.id === idFollowed) {
+            throw new Error("O usuário não pode seguir o próprio id")
+        }
+
+        const followed = await this.userData.findUserById(idFollowed)
+        if (!followed) {
+            throw new Error("Usuário não encontrado")
+        }
+
+        const id = this.idGenerator.generateId()
+
+        const follow = new Follow(
+            id,
+            tokenData.id,
+            followed.id
+        )
+        const followUser = await this.userData.followUser(follow)
+
+        const usernameFollowed = followed.name as string
+        return usernameFollowed
+    }
+
+    deleteFollowUser = async (input: followInputDTO) => {
+
+
+        const { idFollowed, token } = input
+        if (!idFollowed) {
+            throw new Error("Invalid fields")
+        }
+
+        if (!token) {
+            throw new Error("Token not informed")
+        }
+        const tokenData = this.authenticator.getTokenData(token)
+        if (tokenData.id === idFollowed) {
+            throw new Error("User cannot use own id")
+        }
+
+        const followed = await this.userData.findUserById(idFollowed)
+        if (!followed) {
+            throw new Error("User not found")
+        }
+
+        const verifyFollowedUser = await this.userData.findFollowedUser(tokenData.id, idFollowed)
+        if (!verifyFollowedUser) {
+            throw new Error("You do not follow this user")
+        }
+
+
+        const unfollowUser = await this.userData.deleteFollowedUser(tokenData.id, idFollowed)
+        const userUnfollow = await this.userData.deleteFollowedUser(idFollowed, tokenData.id)
+
+        const usernameFollowed = followed.name as string
+        return usernameFollowed
     }
 }

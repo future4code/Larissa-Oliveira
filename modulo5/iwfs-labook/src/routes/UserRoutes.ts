@@ -7,13 +7,11 @@ import { IdGenerator } from "../services/IdGenerator";
 import UserData from "../data/UserData";
 
 
-const userController = new UserController(
-    new UserBusiness(
-        new UserData()
-    )
-)
+const userController = new UserController()
 
-export const userRouter = express.Router();
+export const userRouter = express.Router()
 
 userRouter.post("/signup", userController.signup)
 userRouter.post("/login", userController.login)
+userRouter.put("/follow/:id", userController.follow)
+userRouter.delete("/unfollow/:id", userController.unfollow)

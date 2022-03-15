@@ -13,9 +13,7 @@ export enum USER_TYPES {
 export type postingInputDTO = {
     image: string,
     description: string,
-    date: Date,
     type: USER_TYPES,
-    authorId: string,
 }
 
 
@@ -38,37 +36,35 @@ export default class PostBusiness {
 
         const inputToken = token
 
-        const { image, description, date, type, authorId }: postingInputDTO = input
+        const { image, description, type}: postingInputDTO = input
 
-        if (!image || !description || !date || !type || !authorId) {
-            throw new Error("Campos inválidos")
-        }
-        if (!image || !description || !date || !type || !authorId) {
+        if (!image || !description || !type) {
             throw new Error("Campos inválidos")
         }
 
         const id = this.idGenerator.generateId()
 
-        const registeredPost = await this.postData.findById(id)
+        const registeredPost = await this.postData.findPostById(id)
         if (registeredPost) {
             throw new Error("Post já criado")
         }
 
-        const dateFormatted = this.formatDate.formatPT(date) as unknown as Date
-
         const verifyToken = this.authenticator.getTokenData(inputToken)
+
+        const userPost = await this.postData.findUserById(verifyToken.id)
 
         if (!verifyToken) {
             throw new Error("Token inexistente ou inválido.")
         }
+        const autorName =  userPost?.name as string
 
         const post = new Post(
             id,
+            verifyToken.id,
+            autorName,
             image,
             description,
-            dateFormatted,
-            type,
-            authorId,
+            type
         )
         console.log(post)
         await this.postData.insert(post)
