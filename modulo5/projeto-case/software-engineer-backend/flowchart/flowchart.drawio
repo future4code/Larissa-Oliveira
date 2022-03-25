@@ -1,0 +1,94 @@
+<mxfile host="65bd71144e">
+    <diagram id="Nbzon1vZWJNahJXYzAo5" name="Página-1">
+        <mxGraphModel dx="933" dy="429" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="3" value="transactions" style="rounded=1;whiteSpace=wrap;html=1;fontSize=17;" parent="1" vertex="1">
+                    <mxGeometry x="354" y="10" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="" style="endArrow=none;dashed=1;html=1;fontSize=17;exitX=1;exitY=0;exitDx=0;exitDy=0;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="260" y="100" as="sourcePoint"/>
+                        <mxPoint x="260" y="140" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="8" value="&lt;font style=&quot;font-size: 8px&quot;&gt;valorDaCompra:&lt;br&gt;descriçãoDaCompra:&lt;br&gt;metodPagamento:&lt;br&gt;numeroCartão:&lt;br&gt;nomeTitular:&lt;br&gt;cartãoDataValidade:&lt;br&gt;codigoCVV:&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=17;align=left;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="371" y="120" width="86" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="endArrow=none;dashed=1;html=1;fontSize=8;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="3" target="8" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="460" y="230" as="sourcePoint"/>
+                        <mxPoint x="510" y="180" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="&lt;font style=&quot;font-size: 8px&quot;&gt;valorDaCompra:&lt;br&gt;descriçãoDaCompra:&lt;br&gt;metodPagamento:&lt;br&gt;numeroCriptograf1234:(verify)&lt;br&gt;nomeTitular:&lt;br&gt;cartãoDataValidade:&lt;br&gt;codigoCVVCripto:(verify)&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=17;align=left;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="354" y="320" width="119" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="senha errada&lt;br&gt;3 tentativas&lt;br&gt;apos&amp;nbsp;&lt;br&gt;block cartão" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="540" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="se tiver errado" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" parent="1" vertex="1">
+                    <mxGeometry x="413" y="500" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="" style="endArrow=none;dashed=1;html=1;fontSize=8;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="11" target="12" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="340" y="620" as="sourcePoint"/>
+                        <mxPoint x="390" y="570" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" value="" style="endArrow=none;dashed=1;html=1;fontSize=8;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="17" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="413" y="515" as="sourcePoint"/>
+                        <mxPoint x="413" y="440" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="17" value="se tiver certo" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="510" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="" style="endArrow=none;dashed=1;html=1;fontSize=8;entryX=0.668;entryY=1.005;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryPerimeter=0;" parent="1" source="12" target="10" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="350" y="500" as="sourcePoint"/>
+                        <mxPoint x="400" y="450" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="19" value="verificar se é débito ou crédito" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;" parent="1" vertex="1">
+                    <mxGeometry x="347" y="610" width="110" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="" style="endArrow=none;dashed=1;html=1;fontSize=8;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;" parent="1" source="19" target="17" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="300" y="620" as="sourcePoint"/>
+                        <mxPoint x="350" y="570" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="21" value="status da compra = paid&lt;br&gt;dataDoPagamento&lt;br&gt;fee:taxa de 3% desconta" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;" parent="1" vertex="1">
+                    <mxGeometry x="90" y="610" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="se for débito" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="620" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="" style="endArrow=none;dashed=1;html=1;fontSize=8;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="22" target="19" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="300" y="620" as="sourcePoint"/>
+                        <mxPoint x="350" y="570" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="24" value="status da compra =&amp;nbsp;&amp;nbsp;&lt;code style=&quot;box-sizing: border-box ; font-family: , , &amp;#34;sf mono&amp;#34; , &amp;#34;menlo&amp;#34; , &amp;#34;consolas&amp;#34; , &amp;#34;liberation mono&amp;#34; , monospace ; padding: 0.2em 0.4em ; margin: 0px ; border-radius: 6px ; color: rgb(240 , 243 , 246) ; text-align: left&quot;&gt;&lt;font style=&quot;font-size: 8px&quot;&gt;waiting_funds&lt;/font&gt;&lt;/code&gt;&lt;span style=&quot;color: rgb(240 , 243 , 246) ; font-family: , &amp;#34;blinkmacsystemfont&amp;#34; , &amp;#34;segoe ui&amp;#34; , &amp;#34;helvetica&amp;#34; , &amp;#34;arial&amp;#34; , sans-serif , &amp;#34;apple color emoji&amp;#34; , &amp;#34;segoe ui emoji&amp;#34; ; font-size: 16px ; text-align: left ; background-color: rgb(10 , 12 , 16)&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;br&gt;dataDoPagamento + 30 dias&lt;br&gt;fee:taxa de 5% desconta" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;" parent="1" vertex="1">
+                    <mxGeometry x="590" y="610" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="se for crédito" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="625" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="consultar saldo" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="750" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="valor total&lt;br&gt;todos os valores recebido" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="830" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="valor total a receber&lt;br&gt;todos os valores" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;" parent="1" vertex="1">
+                    <mxGeometry x="550" y="840" width="120" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
