@@ -6,6 +6,7 @@ export const Movies = () => {
     return (
         <div>
             <Header />
+            
             <CardMovie />
         </div>
     )
