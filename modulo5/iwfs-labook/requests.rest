@@ -1,0 +1,25 @@
+
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+   "name": "Larissa",
+   "email": "Larisasa@matos.com",
+   "password": "ihatepeter"
+}
+
+###
+GET http://localhost:3003/user?email=Larissa@matos.com
+Content-Type: application/json
+###
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+   "email": "asas@s.com" ,
+   "password": "ihatepeter"
+}
+###
+POST http://localhost:3003/user/follow/?id=63e13f83-54dd-4981-a31c-9a4ae8e03aed
+Content-Type: application/json
+Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkNmVjM2M4LTJlMmUtNDUzZi1hNmViLTVkNDVkM2ZiYTdkNiIsImlhdCI6MTY0NzMwMjkwMCwiZXhwIjoxNjQ3MzA0MzQwfQ.qFV_EOsZWUPZGlilxgYayKaDwsmY7ebj7SzWRy7m8Aw"
