@@ -1,5 +1,5 @@
 <h1 align="center" color="069bfb">
-  <span color="red">Olá! Seja bem vindo(a) ao projeto Filmes ! </span>
+  <span color="red">Olá! Seja bem vindo(a) ao projeto Case 2 </span>
 <br /> <br />
 
 <!-- <p align="center">
