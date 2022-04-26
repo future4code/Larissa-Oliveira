@@ -1,0 +1,30 @@
+
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{  "name": "Larissa" ,
+   "email": "Larissa@matos.com" ,
+   "password": "ihatepeter",
+   "role": "ADMIN"
+}
+
+###
+GET http://localhost:3003/user?email=Larissa@matos.com
+Content-Type: application/json
+###
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+   "email": "Larissa@matos.com" ,
+   "password": "ihatepeter"
+}
+###
+GET http://localhost:3003/all
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA1N2EyMWEzLTliZDEtNDNjNS05YTc0LWY0YmJkY2Q3MTY1NyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY0NjcwMzgxNywiZXhwIjoxNjQ2NzA1MjU3fQ.vF_3vgmPWnQIGSP-cg3wHcJ_vhQVX9TAxFg5a59Uomc
+
+###
+DELETE http://localhost:3003/?id=6c39d2dd-539d-40d0-b913-f4c1012b61f4
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA1N2EyMWEzLTliZDEtNDNjNS05YTc0LWY0YmJkY2Q3MTY1NyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY0NjcwMzgxNywiZXhwIjoxNjQ2NzA1MjU3fQ.vF_3vgmPWnQIGSP-cg3wHcJ_vhQVX9TAxFg5a59Uomc
